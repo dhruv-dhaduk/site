@@ -1,12 +1,35 @@
-import { Button } from '@/components/ui/button';
+import { Header } from '@/components/Header';
+import { Education } from '@/components/portfolio/sections/Education';
+import { Hero } from '@/components/portfolio/sections/Hero';
+import { Projects } from '@/components/portfolio/sections/Projects';
+import { Skills } from '@/components/portfolio/sections/Skills';
 
 export default function Home() {
     return (
-        <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-            <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
-                <p className="text-center">Hello, World from Dhruv</p>
-                <Button>Button</Button>
-            </main>
+        <div className="m-auto w-full max-w-[80rem]">
+            <Header />
+
+            <div className="h-[100dvh] w-full">
+                <Hero />
+            </div>
+
+            <div
+                id="skills"
+                className="h-[50dvh] max-h-[30rem] min-h-[15rem] w-full p-4 pt-20"
+            >
+                <Skills />
+            </div>
+
+            <div id="projects" className="p-4 pt-20">
+                <Projects />
+            </div>
+
+            <div
+                id="education"
+                className="h-[50dvh] min-h-[15rem] w-full p-4 pt-20"
+            >
+                <Education />
+            </div>
         </div>
     );
 }

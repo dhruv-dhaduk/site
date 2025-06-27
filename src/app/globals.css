@@ -41,6 +41,8 @@
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
     --radius-xl: calc(var(--radius) + 4px);
+
+    --color-gray: #363636;
 }
 
 :root {
@@ -118,5 +120,19 @@
     }
     body {
         @apply bg-background text-foreground;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .glassmorphic {
+        backdrop-filter: blur(8px) contrast(1) saturate(1);
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .grid-cols-auto-fit {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        place-content: center;
     }
 }
