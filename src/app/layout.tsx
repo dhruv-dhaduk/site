@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: 'Dhruv Dhaduk',
+    icons: '/logos/favicon.png',
 };
 
 export default function RootLayout({
