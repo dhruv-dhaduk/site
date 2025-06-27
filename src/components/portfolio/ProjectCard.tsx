@@ -1,6 +1,4 @@
 import type { Project } from '@/types/project.types';
-// import githubLogo from '/logos/github.svg';
-// import linkLogo from '/logos/link.svg';
 
 interface ProjectCardProp {
     project: Project;
@@ -18,17 +16,12 @@ export function ProjectCard({ project }: ProjectCardProp) {
                     className="h-full w-full"
                     alt={project.title}
                 />
-                <p
-                    className="absolute inset-0 m-auto h-fit w-52 text-center text-3xl font-bold"
-                    role="heading"
-                >
+                <p className="absolute inset-0 m-auto h-fit w-52 text-center text-3xl font-bold">
                     {project.title}
                 </p>
             </div>
             <div className="flex flex-1 flex-col gap-2">
-                <p className="text-xl font-bold" role="heading">
-                    {project.title}
-                </p>
+                <p className="text-xl font-bold">{project.title}</p>
                 <p className="pb-4 text-sm">{project.description}</p>
                 <p className="mt-auto flex gap-2 text-sm font-semibold text-blue-500">
                     {project.techStack.map((tech) => (

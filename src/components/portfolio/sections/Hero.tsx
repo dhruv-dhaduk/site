@@ -9,7 +9,6 @@ export function Hero() {
                 <p>{`Hi, I'm`}</p>
                 <p
                     className={`bg-gradient-to-r text-5xl sm:text-6xl md:text-7xl lg:text-8xl ${GRADIENTS[0].normal} inline-block bg-clip-text text-transparent`}
-                    role="heading"
                 >
                     Dhruv Dhaduk
                 </p>
