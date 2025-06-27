@@ -10,10 +10,7 @@ export default function Home() {
                 <Hero />
             </div>
 
-            <div
-                id="skills"
-                className="h-[50dvh] max-h-[30rem] min-h-[15rem] w-full p-4 pt-20"
-            >
+            <div id="skills" className="w-full p-4 pt-20">
                 <Skills />
             </div>
 
@@ -21,10 +18,7 @@ export default function Home() {
                 <Projects />
             </div>
 
-            <div
-                id="education"
-                className="h-[50dvh] min-h-[15rem] w-full p-4 pt-20"
-            >
+            <div id="education" className="w-full p-4 pt-20">
                 <Education />
             </div>
         </div>
