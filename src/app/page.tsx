@@ -1,14 +1,11 @@
-import { Header } from '@/components/Header';
-import { Education } from '@/components/portfolio/sections/Education';
 import { Hero } from '@/components/portfolio/sections/Hero';
-import { Projects } from '@/components/portfolio/sections/Projects';
 import { Skills } from '@/components/portfolio/sections/Skills';
+import { Projects } from '@/components/portfolio/sections/Projects';
+import { Education } from '@/components/portfolio/sections/Education';
 
 export default function Home() {
     return (
         <div className="m-auto w-full max-w-[80rem]">
-            <Header />
-
             <div className="h-[100dvh] w-full">
                 <Hero />
             </div>
