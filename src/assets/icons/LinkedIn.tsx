@@ -6,6 +6,7 @@ export function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             stroke="currentColor"
+            role="presentation"
             {...props}
         >
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

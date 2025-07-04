@@ -5,6 +5,7 @@ export function EmailIcon(props: React.SVGProps<SVGSVGElement>) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             stroke="currentColor"
+            role="presentation"
             {...props}
         >
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

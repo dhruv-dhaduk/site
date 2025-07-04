@@ -9,6 +9,7 @@ export function WikiIcon(props: React.SVGProps<SVGSVGElement>) {
             viewBox="0 0 508.053 508.053"
             fill="currentColor"
             stroke="currentColor"
+            role="presentation"
             {...props}
         >
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

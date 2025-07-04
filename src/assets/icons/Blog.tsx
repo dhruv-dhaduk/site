@@ -7,6 +7,7 @@ export function BlogIcon(props: React.SVGProps<SVGSVGElement>) {
             viewBox="0 0 512 512"
             fill="currentColor"
             stroke="currentColor"
+            role="presentation"
             {...props}
         >
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

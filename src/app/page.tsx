@@ -59,6 +59,7 @@ export default function Home() {
                         href="https://github.com/dhruv-dhaduk"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="GitHub Profile"
                     >
                         <GitHubIcon className="h-8 w-8 hover:text-white" />
                     </a>
@@ -67,11 +68,17 @@ export default function Home() {
                         href="https://linkedin.com/in/dhruvdhaduk"
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="LinkedIn Profile"
                     >
                         <LinkedInIcon className="h-8 w-8 hover:text-[#0a66c2]" />
                     </a>
 
-                    <a href="mailto:dhadukd44@gmail.com">
+                    <a
+                        href="mailto:dhadukd44@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Email Dhruv Dhaduk"
+                    >
                         <EmailIcon className="h-10 hover:text-[#EA4335]" />
                     </a>
                 </div>
