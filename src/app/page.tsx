@@ -59,7 +59,7 @@ export default function Home() {
                         href="https://github.com/dhruv-dhaduk"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="GitHub Profile"
+                        aria-label="GitHub Profile (Opens in new tab)"
                     >
                         <GitHubIcon className="h-8 w-8 hover:text-white" />
                     </a>
@@ -68,7 +68,7 @@ export default function Home() {
                         href="https://linkedin.com/in/dhruvdhaduk"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="LinkedIn Profile"
+                        aria-label="LinkedIn Profile (Opens in new tab)"
                     >
                         <LinkedInIcon className="h-8 w-8 hover:text-[#0a66c2]" />
                     </a>
@@ -77,7 +77,7 @@ export default function Home() {
                         href="mailto:dhadukd44@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Email Dhruv Dhaduk"
+                        aria-label="Email Dhruv Dhaduk (Opens in email client)"
                     >
                         <EmailIcon className="h-10 hover:text-[#EA4335]" />
                     </a>
