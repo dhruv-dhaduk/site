@@ -136,3 +136,15 @@
         place-content: center;
     }
 }
+
+@layer utilities {
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .animate-blink {
+        animation: blink 700ms infinite;
+    }
+}

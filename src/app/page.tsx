@@ -15,8 +15,9 @@ export default function Home() {
                 {/* Intro */}
                 <div className="flex flex-col gap-2">
                     <p className="text-sm text-[#999]">{`Hi I'm`}</p>
-                    <h1 className="font-inter flex items-center gap-1 text-5xl font-bold">
-                        Dhruv Dhaduk
+                    <h1 className="font-inter flex items-end gap-4 text-5xl font-bold">
+                        <span>Dhruv Dhaduk</span>
+                        <span className="animate-blink mb-1 hidden h-2 w-6 bg-[#E5E5E5] sm:block" />
                     </h1>
                     <p className="flex items-center gap-1.5 text-[#bbbbbb]">
                         <LocationIcon className="h-5 w-5" />
