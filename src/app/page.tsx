@@ -56,7 +56,7 @@ export default function Home() {
                 {/* External Links */}
                 <div className="flex items-start gap-6 border-[#333] text-[#BFBFBF]">
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/dhruv-dhaduk"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -64,14 +64,14 @@ export default function Home() {
                     </a>
 
                     <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="https://linkedin.com/in/dhruvdhaduk"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <LinkedInIcon className="h-8 w-8 hover:text-[#0a66c2]" />
                     </a>
 
-                    <a href="mailto:you@example.com">
+                    <a href="mailto:dhadukd44@gmail.com">
                         <EmailIcon className="h-10 hover:text-[#EA4335]" />
                     </a>
                 </div>
