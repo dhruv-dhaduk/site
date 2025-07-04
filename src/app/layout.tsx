@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono, Inter } from 'next/font/google';
+import { ProgressBarProvider } from '@/components//ProgressBarProvider';
 import './globals.css';
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -88,7 +89,7 @@ export default function RootLayout({
             <body
                 className={`dark ${ibmPlexMono.variable} ${inter.variable} antialiased`}
             >
-                {children}
+                <ProgressBarProvider>{children}</ProgressBarProvider>
             </body>
         </html>
     );
