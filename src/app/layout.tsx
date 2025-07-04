@@ -77,6 +77,7 @@ export const metadata: Metadata = {
             'en-US': '/en',
         },
     },
+    metadataBase: new URL('https://dhruvdhaduk.tech'),
 };
 
 export default function RootLayout({
