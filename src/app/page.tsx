@@ -10,7 +10,7 @@ import { EmailIcon } from '@/assets/icons/Email';
 
 export default function Home() {
     return (
-        <main className="font-plex flex min-h-screen items-center justify-center bg-[#07070a] px-6 py-16 text-[#E5E5E5]">
+        <main className="font-plex flex min-h-dvh items-center justify-center bg-[#07070a] px-6 py-16 text-[#E5E5E5]">
             <div className="mx-auto flex max-w-3xl flex-col gap-12">
                 {/* Intro */}
                 <div className="flex flex-col gap-2">
