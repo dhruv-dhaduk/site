@@ -75,9 +75,7 @@ export default function Home() {
 
                     <a
                         href="mailto:dhadukd44@gmail.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Email Dhruv Dhaduk (Opens in email client)"
+                        aria-label="Email Dhruv Dhaduk"
                     >
                         <EmailIcon className="h-10 hover:text-[#EA4335]" />
                     </a>
