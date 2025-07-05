@@ -42,7 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                         href={project.githubLink}
                         target="_blank"
                         aria-label={`${project.title} GitHub Link (opens in a new tab)`}
-                        className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-[#9CA3AF] hover:text-white"
+                        className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-white hover:text-white"
                     >
                         <GitHubIcon className="h-5 w-5" />
                         <span className="text-sm font-semibold">
