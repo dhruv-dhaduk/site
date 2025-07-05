@@ -59,9 +59,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-emerald-500 hover:text-emerald-500"
                             >
                                 <WebsiteIcon className="h-5 w-5" />
-                                {/* <span className="text-sm font-semibold">
-                                    Live Link
-                                </span> */}
                             </a>
                         )}
                         {project.npmLink && (
@@ -72,9 +69,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-[#D40001] hover:text-[#D40001]"
                             >
                                 <NpmIcon className="h-5 w-5" />
-                                {/* <span className="text-sm font-semibold">
-                                    NPM Link
-                                </span> */}
                             </a>
                         )}
                         {project.downloadLink && (
@@ -85,9 +79,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-[#6ca8d3] hover:text-[#6ca8d3]"
                             >
                                 <DownloadIcon className="h-5 w-5" />
-                                {/* <span className="text-sm font-semibold">
-                                    Download Link
-                                </span> */}
                             </a>
                         )}
                     </div>
