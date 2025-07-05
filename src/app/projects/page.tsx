@@ -1,13 +1,19 @@
+import { PROJECTS } from '@/data/projects';
+import { ProjectCard } from '@/components/ProjectCard';
+
 export default async function Projects() {
     return (
-        <div className="flex min-h-dvh flex-col items-center justify-center">
-            <h1 className="font-inter mb-4 text-4xl font-bold">Projects</h1>
-            <p className="font-plex text-lg text-gray-600">
-                This page is under construction.
-            </p>
-            <p className="font-plex text-lg text-gray-600">
-                Stay tuned for updates!
-            </p>
-        </div>
+        <main className="font-plex flex flex-col gap-12 bg-[#07070a] px-6 py-16 text-[#E5E5E5]">
+            <h1 className="font-inter flex items-end gap-4 overflow-visible text-4xl font-bold sm:text-[44px]">
+                <span className="bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b] bg-clip-text text-transparent">
+                    {`Things I've Built`}
+                </span>
+            </h1>
+            <div className="grid-cols-auto-fit grid gap-8">
+                {PROJECTS.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+            </div>
+        </main>
     );
 }

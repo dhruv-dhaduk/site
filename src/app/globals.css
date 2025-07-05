@@ -133,7 +133,7 @@
     }
 
     .grid-cols-auto-fit {
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
         place-content: center;
     }
 }
