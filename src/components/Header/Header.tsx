@@ -22,7 +22,7 @@ export function Header({ activePage }: HeaderProps) {
     }
 
     return (
-        <header className="font-jetbrains glassmorphic sticky top-0 z-10 flex h-12 w-full items-center justify-between border-b border-[#1a1a1a] px-4 text-[#E5E5E5] sm:h-14">
+        <header className="font-jetbrains bg-background/30 glassmorphic sticky top-0 z-10 flex h-12 w-full items-center justify-between border-b border-[#1a1a1a] px-4 text-[#E5E5E5] sm:h-14">
             <div className="sm:text-lg">
                 <Link href="/" className="hover:text-white">
                     ~/dhruv ❯{' '}

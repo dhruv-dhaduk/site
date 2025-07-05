@@ -129,7 +129,6 @@
 
     .glassmorphic {
         backdrop-filter: blur(8px) contrast(1) saturate(1);
-        background-color: #07070a99;
     }
 
     .grid-cols-auto-fit {
