@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { NavLink } from './NavLink';
+import { HamburgerMenu } from './HamburgerMenu';
+import type { ActivePage } from './types';
 
 interface HeaderProps {
-    activePage: 'projects' | 'blog' | 'wiki';
+    activePage: ActivePage;
 }
 
 export function Header({ activePage }: HeaderProps) {
@@ -28,7 +30,7 @@ export function Header({ activePage }: HeaderProps) {
                 <span>{command}</span>
                 <span className="animate-blink ml-2 inline-block h-1 w-3.5 bg-[#E5E5E5]" />
             </div>
-            <div className="hidden gap-4 text-lg sm:flex">
+            <div className="hidden gap-3 text-lg sm:flex">
                 <NavLink
                     href="/projects"
                     label="Projects"
@@ -44,6 +46,9 @@ export function Header({ activePage }: HeaderProps) {
                     label="Wiki"
                     isActive={activePage === 'wiki'}
                 />
+            </div>
+            <div className="flex items-center sm:hidden">
+                <HamburgerMenu activePage={activePage} />
             </div>
         </header>
     );
