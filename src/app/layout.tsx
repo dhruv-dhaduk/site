@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Mono, Inter } from 'next/font/google';
+import { JetBrains_Mono, IBM_Plex_Mono, Inter } from 'next/font/google';
 import { ProgressBarProvider } from '@/components//ProgressBarProvider';
 import './globals.css';
+
+const jetBrainsMono = JetBrains_Mono({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-jetbrains',
+});
 
 const ibmPlexMono = IBM_Plex_Mono({
     subsets: ['latin'],
@@ -88,7 +94,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`dark ${ibmPlexMono.variable} ${inter.variable} antialiased`}
+                className={`dark ${jetBrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
             >
                 <ProgressBarProvider>{children}</ProgressBarProvider>
             </body>
