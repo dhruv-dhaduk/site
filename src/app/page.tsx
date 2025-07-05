@@ -54,7 +54,7 @@ export default function Home() {
                 </div>
 
                 {/* External Links */}
-                <div className="flex items-start gap-6 border-[#333] text-[#BFBFBF]">
+                <div className="flex items-start gap-6 border-[#333] pl-2 text-[#BFBFBF]">
                     <a
                         href="https://github.com/dhruv-dhaduk"
                         target="_blank"
