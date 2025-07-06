@@ -4,7 +4,7 @@ import {
 } from '@/components/Projects/ProjectList';
 import { Suspense } from 'react';
 
-export const revalidate = false;
+export const revalidate = 0;
 
 export default async function Projects() {
     return (
