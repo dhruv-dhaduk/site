@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SmartImage } from '@/components/SmartImage';
 import type { ImageData } from '@/types/image';
 
@@ -12,6 +12,11 @@ interface ThumbnailImageProps {
 
 export function ThumbnailImage({ type, src, alt }: ThumbnailImageProps) {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     return (
         <>
@@ -20,7 +25,7 @@ export function ThumbnailImage({ type, src, alt }: ThumbnailImageProps) {
                 src={src}
                 width={800}
                 height={450}
-                className={`h-full w-full transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className={`h-full w-full transition-opacity duration-700 ${isClient && !isLoaded ? 'opacity-0' : 'opacity-100'}`}
                 alt={alt}
                 onLoad={() => setIsLoaded(true)}
             />
