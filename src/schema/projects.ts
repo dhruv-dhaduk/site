@@ -1,10 +1,12 @@
 import { z } from 'zod';
+import { ImageSchema } from './image';
 
 export const ProjectSchema = z.object({
     id: z.string().trim().nonempty(),
     title: z.string().trim().nonempty(),
     description: z.string().trim().nonempty(),
-    thumbnail: z.string().trim().nonempty().url(),
+    // thumbnail: z.string().trim().nonempty().url(),
+    thumbnail: ImageSchema,
     githubLink: z.string().trim().nonempty().url(),
     liveLink: z.string().trim().nonempty().url().nullable(),
     downloadLink: z.string().trim().nonempty().url().nullable(),

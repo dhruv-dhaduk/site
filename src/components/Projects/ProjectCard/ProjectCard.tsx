@@ -13,7 +13,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
     return (
         <div className="flex flex-col gap-3 rounded-lg border border-[#1F1F1F] bg-[#030303] p-1">
             <div className="relative aspect-video overflow-hidden rounded-t-lg">
-                <ThumbnailImage src={project.thumbnail} alt={project.title} />
+                <ThumbnailImage
+                    type={project.thumbnail.type}
+                    src={project.thumbnail.url}
+                    alt={project.title}
+                />
                 <p className="font-inter absolute inset-0 m-auto h-fit w-52 text-center text-2xl font-bold text-[#F5F5F5]">
                     <span className="bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b] bg-clip-text text-transparent">
                         {project.title}

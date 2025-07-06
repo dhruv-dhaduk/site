@@ -1,19 +1,22 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
+import { SmartImage } from '@/components/SmartImage';
+import type { ImageData } from '@/types/image';
 
 interface ThumbnailImageProps {
+    type: ImageData['type'];
     src: string;
     alt: string;
 }
 
-export function ThumbnailImage({ src, alt }: ThumbnailImageProps) {
+export function ThumbnailImage({ type, src, alt }: ThumbnailImageProps) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
         <>
-            <Image
+            <SmartImage
+                type={type}
                 src={src}
                 width={800}
                 height={450}
