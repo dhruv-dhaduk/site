@@ -1,11 +1,4 @@
-export interface Project {
-    id: string;
-    title: string;
-    description: string;
-    thumbnail: string;
-    githubLink: string;
-    liveLink: string | null;
-    downloadLink: string | null;
-    npmLink: string | null;
-    tags: Array<string>;
-}
+import type { z } from 'zod';
+import type { ProjectSchema } from '@/schema/projects';
+
+export type Project = z.infer<typeof ProjectSchema>;
