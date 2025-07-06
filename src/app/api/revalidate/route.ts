@@ -13,9 +13,16 @@ export async function POST(req: NextRequest) {
         );
     }
 
+    if (!process.env.GITHUB_WEBHOOK_SECRET) {
+        return NextResponse.json(
+            { error: 'GITHUB_WEBHOOK_SECRET not set' },
+            { status: 500 }
+        );
+    }
+
     const rawBody = await req.text();
 
-    const hmac = crypto.createHmac('sha256', 'MoreMoro');
+    const hmac = crypto.createHmac('sha256', process.env.GITHUB_WEBHOOK_SECRET);
     const digest = 'sha256=' + hmac.update(rawBody).digest('hex');
 
     const isValid = crypto.timingSafeEqual(
