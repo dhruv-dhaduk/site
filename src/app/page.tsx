@@ -8,6 +8,8 @@ import { GitHubIcon } from '@/assets/icons/GitHub';
 import { LinkedInIcon } from '@/assets/icons/LinkedIn';
 import { EmailIcon } from '@/assets/icons/Email';
 
+export const revalidate = false;
+
 export default function Home() {
     return (
         <main className="font-plex flex min-h-dvh items-center justify-center bg-[#07070a] px-6 py-16 text-[#E5E5E5]">

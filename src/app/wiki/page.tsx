@@ -1,3 +1,5 @@
+export const revalidate = false;
+
 export default function Wiki() {
     return (
         <div className="flex min-h-dvh flex-col items-center justify-center">

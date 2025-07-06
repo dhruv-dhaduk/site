@@ -4,7 +4,7 @@ import {
 } from '@/components/Projects/ProjectList';
 import { Suspense } from 'react';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = false;
 
 export default async function Projects() {
     return (
