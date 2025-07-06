@@ -7,7 +7,9 @@ const PROJECTS_DATA_URL =
 export async function fetchProjects(): Promise<Array<Project>> {
     console.log('fetchProjects called');
     try {
-        const response = await fetch(PROJECTS_DATA_URL, { cache: 'no-store' });
+        const response = await fetch(PROJECTS_DATA_URL, {
+            next: { revalidate: false },
+        });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
