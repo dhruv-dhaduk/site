@@ -1,5 +1,8 @@
-import { PROJECTS } from '@/data/projects';
-import { ProjectCard } from '@/components/ProjectCard';
+// import { PROJECTS } from '@/data/projects';
+// import { ProjectCard } from '@/components/Projects/ProjectCard';
+// import { fetchProjects } from '@/services/projects';
+import { ProjectList } from '@/components/Projects/ProjectList';
+import { Suspense } from 'react';
 
 export default async function Projects() {
     return (
@@ -9,11 +12,15 @@ export default async function Projects() {
                     {`Things I've Built`}
                 </span>
             </h1>
-            <div className="grid-cols-auto-fit grid gap-8">
-                {PROJECTS.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
-                ))}
-            </div>
+            <Suspense
+                fallback={
+                    <div className="text-center text-gray-400">
+                        Loading projects...
+                    </div>
+                }
+            >
+                <ProjectList />
+            </Suspense>
         </main>
     );
 }
