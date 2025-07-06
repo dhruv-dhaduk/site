@@ -1,0 +1,22 @@
+import { ProjectListSchema } from '@/schema/projects';
+import type { Project } from '@/types/project';
+
+const PROJECTS_DATA_URL =
+    'https://raw.githubusercontent.com/dhruv-dhaduk/vault/refs/heads/main/projects/projects.json';
+
+export async function fetchProjects(): Promise<Array<Project>> {
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate a delay for demonstration purposes
+    try {
+        const response = await fetch(PROJECTS_DATA_URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const projects = ProjectListSchema.parse(data);
+        return projects;
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        throw error;
+    }
+}
