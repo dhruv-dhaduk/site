@@ -1,11 +1,33 @@
+import crypto from 'crypto';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
 export async function POST(req: NextRequest) {
-    const authHeader = req.headers.get('authorization');
+    const signature = req.headers.get('x-hub-signature-256');
 
-    if (authHeader !== `Bearer MoreMoro`) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    if (!signature) {
+        return NextResponse.json(
+            { error: 'Signature header missing' },
+            { status: 400 }
+        );
+    }
+
+    const rawBody = await req.text();
+
+    const hmac = crypto.createHmac('sha256', 'MoreMoro');
+    const digest = 'sha256=' + hmac.update(rawBody).digest('hex');
+
+    const isValid = crypto.timingSafeEqual(
+        Buffer.from(signature),
+        Buffer.from(digest)
+    );
+
+    if (!isValid) {
+        return NextResponse.json(
+            { error: 'Invalid signature' },
+            { status: 401 }
+        );
     }
 
     try {
