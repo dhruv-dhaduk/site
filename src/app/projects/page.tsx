@@ -1,7 +1,7 @@
-// import { PROJECTS } from '@/data/projects';
-// import { ProjectCard } from '@/components/Projects/ProjectCard';
-// import { fetchProjects } from '@/services/projects';
-import { ProjectList } from '@/components/Projects/ProjectList';
+import {
+    ProjectListLoading,
+    ProjectList,
+} from '@/components/Projects/ProjectList';
 import { Suspense } from 'react';
 
 export default async function Projects() {
@@ -12,13 +12,7 @@ export default async function Projects() {
                     {`Things I've Built`}
                 </span>
             </h1>
-            <Suspense
-                fallback={
-                    <div className="text-center text-gray-400">
-                        Loading projects...
-                    </div>
-                }
-            >
+            <Suspense fallback={<ProjectListLoading />}>
                 <ProjectList />
             </Suspense>
         </main>
