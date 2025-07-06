@@ -2,13 +2,16 @@ import { ProjectListSchema } from '@/schema/projects';
 import type { Project } from '@/types/project';
 
 const PROJECTS_DATA_URL =
-    'https://raw.githubusercontent.com/dhruv-dhaduk/vault/refs/heads/main/projects/projects.json';
+    'https://api.github.com/repos/dhruv-dhaduk/vault/contents/projects/projects.json';
 
 export async function fetchProjects(): Promise<Array<Project>> {
     console.log('fetchProjects called');
     try {
         const response = await fetch(PROJECTS_DATA_URL, {
-            next: { tags: ['projects'] },
+            headers: {
+                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+                Accept: 'application/vnd.github.v3.raw',
+            },
         });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath, revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(req: NextRequest) {
     const signature = req.headers.get('x-hub-signature-256');
@@ -31,7 +31,6 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-        revalidateTag('projects');
         revalidatePath('/projects');
 
         return NextResponse.json(
