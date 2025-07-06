@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { LocationIcon } from '@/assets/icons/Location';
 import { ProjectsIcon } from '@/assets/icons/Projects';
 import { BlogIcon } from '@/assets/icons/Blog';
-import { WikiIcon } from '@/assets/icons/Wiki';
 import { GitHubIcon } from '@/assets/icons/GitHub';
 import { LinkedInIcon } from '@/assets/icons/LinkedIn';
 import { EmailIcon } from '@/assets/icons/Email';
+import { UserRoundSearch } from 'lucide-react';
 
 export const revalidate = false;
 
@@ -51,9 +51,9 @@ export default function Home() {
                         icon={<BlogIcon className="h-6 w-6" />}
                     />
                     <NavLink
-                        href="/wiki"
-                        label="Wiki"
-                        icon={<WikiIcon className="h-6 w-6" />}
+                        href="/contact"
+                        label="Contact Me"
+                        icon={<UserRoundSearch className="h-6 w-6" />}
                     />
                 </div>
 

@@ -2,12 +2,10 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 
 export const metadata: Metadata = {
-    title: 'Wiki | Dhruv Dhaduk',
-    description:
-        'Explore the wiki of Dhruv Dhaduk, where I document my knowledge and insights on various topics.',
+    title: 'Contact | Dhruv Dhaduk',
 };
 
-export default function WikiLayout({
+export default function ContactLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
     return (
