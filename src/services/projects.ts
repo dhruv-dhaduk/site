@@ -5,7 +5,6 @@ const PROJECTS_DATA_URL =
     'https://api.github.com/repos/dhruv-dhaduk/vault/contents/projects/projects.json';
 
 export async function fetchProjects(): Promise<Array<Project>> {
-    console.log('fetchProjects called');
     try {
         const response = await fetch(PROJECTS_DATA_URL, {
             headers: {
