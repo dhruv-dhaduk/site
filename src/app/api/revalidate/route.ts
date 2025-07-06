@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 export async function POST(req: NextRequest) {
     const signature = req.headers.get('x-hub-signature-256');
@@ -31,10 +31,8 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-        revalidatePath('/');
+        revalidateTag('projects');
         revalidatePath('/projects');
-        revalidatePath('/blog');
-        revalidatePath('/wiki');
 
         return NextResponse.json(
             { message: 'Revalidation successful', revalidated: true },
