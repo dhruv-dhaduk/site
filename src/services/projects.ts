@@ -5,6 +5,7 @@ const PROJECTS_DATA_URL =
     'https://raw.githubusercontent.com/dhruv-dhaduk/vault/refs/heads/main/projects/projects.json';
 
 export async function fetchProjects(): Promise<Array<Project>> {
+    console.log('fetchProjects called');
     try {
         const response = await fetch(PROJECTS_DATA_URL);
         if (!response.ok) {
