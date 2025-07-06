@@ -4,6 +4,8 @@ import {
 } from '@/components/Projects/ProjectList';
 import { Suspense } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Projects() {
     return (
         <main className="font-plex flex flex-col gap-12 bg-[#07070a] px-6 py-16 text-[#E5E5E5]">
