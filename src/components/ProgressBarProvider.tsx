@@ -1,6 +1,5 @@
 'use client';
 
-// import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { ProgressProvider } from '@bprogress/next/app';
 
 export function ProgressBarProvider({
