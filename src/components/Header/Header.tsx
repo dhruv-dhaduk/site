@@ -17,7 +17,7 @@ export function Header({ activePage }: HeaderProps) {
             command = 'cat blog';
             break;
         case 'contact':
-            command = 'ping dhruv';
+            command = 'ping me';
             break;
     }
 
