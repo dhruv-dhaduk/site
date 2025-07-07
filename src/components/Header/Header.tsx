@@ -16,8 +16,8 @@ export function Header({ activePage }: HeaderProps) {
         case 'blog':
             command = 'cat blog';
             break;
-        case 'wiki':
-            command = 'man wiki';
+        case 'contact':
+            command = 'ping dhruv';
             break;
     }
 
@@ -42,9 +42,9 @@ export function Header({ activePage }: HeaderProps) {
                     isActive={activePage === 'blog'}
                 />
                 <NavLink
-                    href="/wiki"
-                    label="Wiki"
-                    isActive={activePage === 'wiki'}
+                    href="/contact"
+                    label="Contact Me"
+                    isActive={activePage === 'contact'}
                 />
             </div>
             <div className="flex items-center sm:hidden">

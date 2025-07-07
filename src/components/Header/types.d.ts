@@ -1,1 +1,1 @@
-export type ActivePage = 'projects' | 'blog' | 'wiki';
+export type ActivePage = 'projects' | 'blog' | 'contact';

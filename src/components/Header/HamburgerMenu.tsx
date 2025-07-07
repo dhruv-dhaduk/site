@@ -45,9 +45,9 @@ export function HamburgerMenu({ activePage }: HamburgerMenuProps) {
                         isActive={activePage === 'blog'}
                     />
                     <NavLink
-                        href="/wiki"
-                        label="wiki"
-                        isActive={activePage === 'wiki'}
+                        href="/contact"
+                        label="Contact Me"
+                        isActive={activePage === 'contact'}
                     />
                 </div>
             </PopoverContent>

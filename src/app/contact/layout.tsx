@@ -10,7 +10,7 @@ export default function ContactLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <div className="bg-background mx-auto w-full max-w-[80rem]">
-            <Header activePage="wiki" />
+            <Header activePage="contact" />
             {children}
         </div>
     );
