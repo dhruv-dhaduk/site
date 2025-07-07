@@ -10,7 +10,7 @@ export default function ProjectsLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <div className="bg-background mx-auto w-full max-w-[80rem]">
+        <div className="mx-auto w-full max-w-[80rem]">
             <Header activePage="projects" />
             {children}
         </div>

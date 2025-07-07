@@ -22,13 +22,13 @@ export function Header({ activePage }: HeaderProps) {
     }
 
     return (
-        <header className="font-jetbrains bg-background/30 glassmorphic sticky top-0 z-10 flex h-12 w-full items-center justify-between border-b border-[#1a1a1a] px-4 text-[#E5E5E5] sm:h-14">
+        <header className="font-jetbrains bg-site-bg/30 glassmorphic border-site-border-darker sticky top-0 z-10 flex h-12 w-full items-center justify-between border-b px-4 sm:h-14">
             <div className="sm:text-lg">
                 <Link href="/" className="hover:text-white">
                     ~/dhruv ❯{' '}
                 </Link>
                 <span>{command}</span>
-                <span className="animate-blink ml-2 inline-block h-1 w-3.5 bg-[#E5E5E5]" />
+                <span className="animate-blink bg-site-fg ml-2 inline-block h-1 w-3.5" />
             </div>
             <div className="hidden gap-3 text-lg sm:flex">
                 <NavLink

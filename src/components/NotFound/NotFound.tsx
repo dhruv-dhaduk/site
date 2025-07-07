@@ -7,11 +7,9 @@ export function NotFound() {
             <Terminal className="mx-auto h-10 w-10 animate-pulse" />
             <div className="flex items-center justify-center gap-4">
                 <h1 className="font-inter text-5xl font-semibold">
-                    <span className="bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b] bg-clip-text text-transparent">
-                        404
-                    </span>
+                    <span className="text-gradient">404</span>
                 </h1>
-                <div className="h-10 w-[1px] bg-[#2f2f2f]"></div>
+                <div className="bg-site-bg-5 h-10 w-[1px]"></div>
                 <p className="font-plex text-2xl">Not Found</p>
             </div>
             <div className="mt-4">

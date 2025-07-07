@@ -1,9 +1,37 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
+    --color-brand-gmail: var(--brand-gmail);
+    --color-brand-linkedin: var(--brand-linkedin);
+    --color-brand-npm: var(--brand-npm);
+
+    --color-decorate-download: var(--decorate-download);
+    --color-decorate-live: var(--decorate-live);
+
+    --color-site-bg-darker: var(--site-bg-darker);
+    --color-site-bg: var(--site-bg);
+    --color-site-bg-1: var(--site-bg-1);
+    --color-site-bg-2: var(--site-bg-2);
+    --color-site-bg-3: var(--site-bg-3);
+    --color-site-bg-4: var(--site-bg-4);
+    --color-site-bg-5: var(--site-bg-5);
+
+    --color-site-fg: var(--site-fg);
+    --color-site-fg-1: var(--site-fg-1);
+    --color-site-fg-2: var(--site-fg-2);
+    --color-site-fg-3: var(--site-fg-3);
+    --color-site-fg-4: var(--site-fg-4);
+    --color-site-fg-5: var(--site-fg-5);
+    --color-site-fg-6: var(--site-fg-6);
+
+    --color-site-border-darker: var(--site-border-darker);
+    --color-site-border: var(--site-border);
+    --color-site-border-1: var(--site-border-1);
+    --color-site-border-2: var(--site-border-2);
+    --color-site-border-3: var(--site-border-3);
+    --color-site-border-4: var(--site-border-4);
+
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --font-jetbrains: var(--font-jetbrains);
@@ -47,43 +75,39 @@
 }
 
 :root {
-    --radius: 0.625rem;
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
-}
+    --brand-gmail: #ea4335;
+    --brand-linkedin: #0a66c2;
+    --brand-npm: #d40001;
 
-.dark {
-    --background: #07070a;
-    --foreground: oklch(0.985 0 0);
+    --decorate-download: #6ca8d3;
+    --decorate-live: #00bc7d;
+
+    --site-bg-darker: #030303;
+    --site-bg: #07070a;
+    --site-bg-1: #0b0e11;
+    --site-bg-2: #101010;
+    --site-bg-3: #101419;
+    --site-bg-4: #1a1a1a;
+    --site-bg-5: #2f2f2f;
+
+    --site-fg: #e5e5e5;
+    --site-fg-1: #e0e0e0;
+    --site-fg-2: #c2c2c2;
+    --site-fg-3: #bfbfbf;
+    --site-fg-4: #bbbbbb;
+    --site-fg-5: #a1a1aa;
+    --site-fg-6: #999999;
+
+    --site-border-darker: #1a1a1a;
+    --site-border: #1f1f1f;
+    --site-border-1: #202831;
+    --site-border-2: #2a2a2a;
+    --site-border-3: #333333;
+    --site-border-4: #3a3a3a;
+
+    --radius: 0.625rem;
+    --background: var(--site-bg);
+    --foreground: var(--site-fg);
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
@@ -120,13 +144,15 @@
         @apply border-border outline-ring/50;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply bg-site-bg text-site-fg;
     }
 
     html {
         scroll-behavior: smooth;
     }
+}
 
+@layer utilities {
     .glassmorphic {
         backdrop-filter: blur(8px) contrast(1) saturate(1);
     }
@@ -135,9 +161,7 @@
         grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
         place-content: center;
     }
-}
 
-@layer utilities {
     @keyframes blink {
         50% {
             opacity: 0;
@@ -146,5 +170,9 @@
 
     .animate-blink {
         animation: blink 700ms infinite;
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b] bg-clip-text text-transparent;
     }
 }

@@ -32,7 +32,7 @@ export function HamburgerMenu({ activePage }: HamburgerMenuProps) {
                     )}
                 </button>
             </PopoverTrigger>
-            <PopoverContent className="bg-background mt-2 mr-2 w-fit min-w-36 text-white sm:hidden">
+            <PopoverContent className="bg-site-bg mt-2 mr-2 w-fit min-w-36 sm:hidden">
                 <div className="flex flex-col gap-2">
                     <NavLink
                         href="/projects"

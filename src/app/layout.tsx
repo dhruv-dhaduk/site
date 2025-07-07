@@ -94,7 +94,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`dark ${jetBrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
+                className={`${jetBrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
             >
                 <ProgressBarProvider>{children}</ProgressBarProvider>
             </body>

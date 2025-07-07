@@ -11,28 +11,26 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
     return (
-        <div className="flex flex-col gap-3 rounded-lg border border-[#1F1F1F] bg-[#030303] p-1">
+        <div className="bg-site-bg-darker border-site-border flex flex-col gap-3 rounded-lg border p-1">
             <div className="relative aspect-video overflow-hidden rounded-t-lg">
                 <ThumbnailImage
                     type={project.thumbnail.type}
                     src={project.thumbnail.url}
                     alt={project.title}
                 />
-                <p className="font-inter absolute inset-0 m-auto h-fit w-52 text-center text-2xl font-bold text-[#F5F5F5]">
-                    <span className="bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b] bg-clip-text text-transparent">
-                        {project.title}
-                    </span>
+                <p className="font-inter absolute inset-0 m-auto h-fit w-52 text-center text-2xl font-bold">
+                    <span className="text-gradient">{project.title}</span>
                 </p>
             </div>
             <div className="flex flex-1 flex-col gap-2 p-2 pt-0">
-                <p className="pb-4 text-sm leading-relaxed text-[#C2C2C2]">
+                <p className="text-site-fg-2 pb-4 text-sm leading-relaxed">
                     {project.description}
                 </p>
                 <p className="mt-auto flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                         <span
                             key={tag}
-                            className="rounded-full border border-[#333333] bg-[#1A1A1A] px-2 py-0.5 text-xs text-[#999999]"
+                            className="text-site-fg-6 bg-site-bg-4 border-site-border-3 rounded-full border px-2 py-0.5 text-xs"
                         >
                             {tag}
                         </span>
@@ -43,7 +41,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                         href={project.githubLink}
                         target="_blank"
                         aria-label={`${project.title} GitHub Link (opens in a new tab)`}
-                        className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-white hover:text-white"
+                        className="text-site-fg-1 bg-site-bg-2 border-site-border-2 hover:border-site-border-4 ml-[3px] flex items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-l-white hover:text-white"
                     >
                         <GitHubIcon className="h-5 w-5" />
                         <span className="text-sm font-semibold">
@@ -57,7 +55,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 href={project.liveLink}
                                 target="_blank"
                                 aria-label={`${project.title} Live Link (opens in a new tab)`}
-                                className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-emerald-500 hover:text-emerald-500"
+                                className="text-site-fg-1 hover:border-l-decorate-live hover:text-decorate-live bg-site-bg-2 border-site-border-2 hover:border-site-border-4 ml-[3px] flex items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200 hover:ml-0 hover:border-l-4"
                             >
                                 <WebsiteIcon className="h-5 w-5" />
                             </a>
@@ -67,7 +65,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 href={project.npmLink}
                                 target="_blank"
                                 aria-label={`${project.title} NPM Link (opens in a new tab)`}
-                                className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-[#D40001] hover:text-[#D40001]"
+                                className="text-site-fg-1 hover:border-l-brand-npm hover:text-brand-npm bg-site-bg-2 border-site-border-2 hover:border-site-border-4 ml-[3px] flex items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200 hover:ml-0 hover:border-l-4"
                             >
                                 <NpmIcon className="h-5 w-5" />
                             </a>
@@ -77,7 +75,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 href={project.downloadLink}
                                 target="_blank"
                                 aria-label={`${project.title} Download Link (opens in a new tab)`}
-                                className="ml-[3px] flex items-center justify-center gap-2 rounded-md border border-[#2A2A2A] bg-[#101010] px-4 py-2 text-[#E0E0E0] transition-colors duration-200 hover:ml-0 hover:border-l-4 hover:border-[#3A3A3A] hover:border-l-[#6ca8d3] hover:text-[#6ca8d3]"
+                                className="text-site-fg-1 hover:border-l-decorate-download hover:text-decorate-download bg-site-bg-2 border-site-border-2 hover:border-site-border-4 ml-[3px] flex items-center justify-center gap-2 rounded-md border px-4 py-2 transition-colors duration-200 hover:ml-0 hover:border-l-4"
                             >
                                 <DownloadIcon className="h-5 w-5" />
                             </a>
