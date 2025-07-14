@@ -12,5 +12,9 @@ export default function Error({ error }: ErrorProps) {
         console.error('An error occurred:', error);
     }, [error]);
 
-    return <ErrorScreen message={error.message} />;
+    return (
+        <div className="flex min-h-dvh items-center justify-center px-4">
+            <ErrorScreen message={error.message} />
+        </div>
+    );
 }
