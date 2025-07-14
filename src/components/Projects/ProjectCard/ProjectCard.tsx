@@ -1,8 +1,8 @@
-import { ThumbnailImage } from './ThumbnailImage';
 import { DownloadIcon } from '@/assets/icons/Download';
 import { GitHubIcon } from '@/assets/icons/GitHub';
 import { NpmIcon } from '@/assets/icons/Npm';
 import { WebsiteIcon } from '@/assets/icons/Website';
+import { SmartImage } from '@/image';
 import type { Project } from '@/types/project.types';
 
 interface ProjectCardProps {
@@ -13,10 +13,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
     return (
         <div className="bg-site-bg-darker border-site-border flex flex-col gap-3 rounded-lg border p-1">
             <div className="relative aspect-video overflow-hidden rounded-t-lg">
-                <ThumbnailImage
+                <SmartImage
                     type={project.thumbnail.type}
+                    width={800}
+                    height={450}
                     src={project.thumbnail.url}
                     alt={project.title}
+                    className="h-full w-full"
                 />
                 <p className="font-inter absolute inset-0 m-auto h-fit w-52 text-center text-2xl font-bold">
                     <span className="text-gradient">{project.title}</span>
