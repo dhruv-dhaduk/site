@@ -3,7 +3,7 @@ import { DownloadIcon } from '@/assets/icons/Download';
 import { GitHubIcon } from '@/assets/icons/GitHub';
 import { NpmIcon } from '@/assets/icons/Npm';
 import { WebsiteIcon } from '@/assets/icons/Website';
-import type { Project } from '@/types/project';
+import type { Project } from '@/types/project.types';
 
 interface ProjectCardProps {
     project: Project;
