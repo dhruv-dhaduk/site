@@ -1,8 +1,8 @@
+import { Suspense } from 'react';
 import {
     ProjectListLoading,
     ProjectList,
 } from '@/components/Projects/ProjectList';
-import { Suspense } from 'react';
 
 export const revalidate = false;
 
