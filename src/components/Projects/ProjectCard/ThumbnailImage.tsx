@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { SmartImage } from '@/components/SmartImage';
-import type { ImageData } from '@/types/image';
+import { SmartImage } from '@/image/SmartImage';
+import type { ImageData } from '@/image/image.types';
 
 interface ThumbnailImageProps {
     type: ImageData['type'];
