@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/select';
 
 import {
+    BanIcon,
     GmailIcon,
     TelegramIcon,
     MicrosoftTeamsIcon,
@@ -54,7 +55,15 @@ export function ContactMeForm() {
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>Channels</SelectLabel>
-                                    <SelectItem value="none">None</SelectItem>
+                                    <SelectItem value="none">
+                                        <BanIcon
+                                            style={{
+                                                width: ICON_SIZE,
+                                                height: ICON_SIZE,
+                                            }}
+                                        />{' '}
+                                        None
+                                    </SelectItem>
                                     <SelectItem value="email">
                                         <GmailIcon /> Email
                                     </SelectItem>

@@ -1,3 +1,4 @@
+export * from './Ban';
 export * from './Blog';
 export * from './Close';
 export * from './Discord';
