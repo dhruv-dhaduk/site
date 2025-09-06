@@ -41,7 +41,6 @@ export function ContactMeForm() {
                             aria-required
                             type="text"
                             placeholder="Enter Your Name"
-                            className={`border-gray h-10 rounded-lg border pl-3`}
                         />
                     </div>
                     <div className="flex flex-1 flex-col">
@@ -111,7 +110,6 @@ export function ContactMeForm() {
                         aria-required
                         type="email"
                         placeholder="Enter Your Email"
-                        className={`border-gray h-10 rounded-lg border pl-3`}
                     />
                 </div>
                 <div className="flex flex-col">
@@ -124,7 +122,7 @@ export function ContactMeForm() {
                         required
                         aria-required
                         placeholder="How can I help ?"
-                        className={`border-gray min-h-28 rounded-lg border p-3`}
+                        className={`min-h-28`}
                     ></Textarea>
                 </div>
                 <button className="w-fit rounded-lg bg-white px-6 py-2 font-bold text-black duration-200 not-disabled:cursor-pointer not-disabled:hover:scale-105 disabled:opacity-70">
