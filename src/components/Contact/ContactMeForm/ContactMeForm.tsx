@@ -1,5 +1,7 @@
 'use client';
 
+import { Input } from '@/components/ui/input';
+
 export function ContactMeForm() {
     return (
         <div className="mx-auto w-full max-w-lg">
@@ -11,7 +13,7 @@ export function ContactMeForm() {
                     <label htmlFor="name" className="text-[15px]">
                         Name
                     </label>
-                    <input
+                    <Input
                         id="name"
                         name="name"
                         required
@@ -25,7 +27,7 @@ export function ContactMeForm() {
                     <label htmlFor="email" className="text-[15px]">
                         Email
                     </label>
-                    <input
+                    <Input
                         id="email"
                         name="email"
                         required
