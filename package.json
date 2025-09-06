@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@bprogress/next": "^3.2.12",
+        "@hookform/resolvers": "^5.2.1",
         "@radix-ui/react-popover": "^1.1.14",
         "@radix-ui/react-select": "^2.2.6",
         "@radix-ui/react-slot": "^1.2.3",
@@ -20,6 +21,7 @@
         "next": "15.3.4",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "react-hook-form": "^7.62.0",
         "tailwind-merge": "^3.3.1",
         "zod": "^3.25.74"
     },
