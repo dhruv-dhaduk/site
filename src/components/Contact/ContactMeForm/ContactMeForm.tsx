@@ -1,6 +1,7 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 export function ContactMeForm() {
     return (
@@ -41,14 +42,14 @@ export function ContactMeForm() {
                     <label htmlFor="message" className="text-[15px]">
                         Message
                     </label>
-                    <textarea
+                    <Textarea
                         name="message"
                         id="message"
                         required
                         aria-required
                         placeholder="How can I help ?"
-                        className={`border-gray min-h-36 rounded-lg border p-3`}
-                    ></textarea>
+                        className={`border-gray min-h-28 rounded-lg border p-3`}
+                    ></Textarea>
                 </div>
                 <button className="w-fit rounded-lg bg-white px-6 py-2 font-bold text-black duration-200 not-disabled:cursor-pointer not-disabled:hover:scale-105 disabled:opacity-70">
                     Submit
