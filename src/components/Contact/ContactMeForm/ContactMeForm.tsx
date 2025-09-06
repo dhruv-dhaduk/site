@@ -1,6 +1,7 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import {
     Select,
     SelectContent,
@@ -10,7 +11,16 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+
+import {
+    GmailIcon,
+    TelegramIcon,
+    MicrosoftTeamsIcon,
+    SlackIcon,
+    DiscordIcon,
+} from '@/assets/icons';
+
+const ICON_SIZE = 20;
 
 export function ContactMeForm() {
     return (
@@ -46,15 +56,43 @@ export function ContactMeForm() {
                                 <SelectGroup>
                                     <SelectLabel>Channels</SelectLabel>
                                     <SelectItem value="none">None</SelectItem>
-                                    <SelectItem value="email">Email</SelectItem>
+                                    <SelectItem value="email">
+                                        <GmailIcon /> Email
+                                    </SelectItem>
                                     <SelectItem value="telegram">
+                                        <TelegramIcon
+                                            style={{
+                                                width: ICON_SIZE,
+                                                height: ICON_SIZE,
+                                            }}
+                                        />{' '}
                                         Telegram
                                     </SelectItem>
                                     <SelectItem value="teams">
+                                        <MicrosoftTeamsIcon
+                                            style={{
+                                                width: ICON_SIZE,
+                                                height: ICON_SIZE,
+                                            }}
+                                        />{' '}
                                         MS Teams
                                     </SelectItem>
-                                    <SelectItem value="slack">Slack</SelectItem>
+                                    <SelectItem value="slack">
+                                        <SlackIcon
+                                            style={{
+                                                width: ICON_SIZE,
+                                                height: ICON_SIZE,
+                                            }}
+                                        />{' '}
+                                        Slack
+                                    </SelectItem>
                                     <SelectItem value="discord">
+                                        <DiscordIcon
+                                            style={{
+                                                width: ICON_SIZE,
+                                                height: ICON_SIZE,
+                                            }}
+                                        />{' '}
                                         Discord
                                     </SelectItem>
                                 </SelectGroup>
