@@ -50,4 +50,43 @@ function getChannelAccountPlaceholder(channel: ContactChannel): string | void {
     }
 }
 
-export { getChannelAccountLabel, getChannelAccountPlaceholder };
+function getSubmitButtonLabel({
+    channel,
+    name,
+    isNameTouched,
+    isNameDirty,
+    isMessageTouched,
+    isMessageDirty,
+}: {
+    channel: ContactChannel;
+    name?: string;
+    isNameTouched?: boolean;
+    isNameDirty?: boolean;
+    isMessageTouched?: boolean;
+    isMessageDirty?: boolean;
+}): string {
+    if (channel === ContactChannel.NONE) {
+        if (
+            isNameTouched ||
+            isNameDirty ||
+            isMessageTouched ||
+            isMessageDirty
+        ) {
+            if (name) {
+                return 'Send Message';
+            } else {
+                return 'Send Anonymous Message';
+            }
+        } else {
+            return 'Submit';
+        }
+    } else {
+        return 'Start a Conversation';
+    }
+}
+
+export {
+    getChannelAccountLabel,
+    getChannelAccountPlaceholder,
+    getSubmitButtonLabel,
+};

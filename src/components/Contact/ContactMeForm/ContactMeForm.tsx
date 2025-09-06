@@ -32,6 +32,7 @@ import {
 import {
     getChannelAccountLabel,
     getChannelAccountPlaceholder,
+    getSubmitButtonLabel,
 } from '@/utils/contactForm';
 
 const ICON_SIZE = 20;
@@ -40,7 +41,7 @@ export function ContactMeForm() {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting },
+        formState: { errors, isSubmitting, touchedFields, dirtyFields },
         reset,
         watch,
         setValue,
@@ -63,6 +64,16 @@ export function ContactMeForm() {
     };
 
     const selectedChannel = watch('channel');
+    const name = watch('name');
+
+    const submitButtonLabel = getSubmitButtonLabel({
+        channel: selectedChannel,
+        name: name?.trim(),
+        isNameTouched: touchedFields.name,
+        isNameDirty: dirtyFields.name,
+        isMessageTouched: touchedFields.message,
+        isMessageDirty: dirtyFields.message,
+    });
 
     const isSubmitDisabled =
         isSubmitting ||
@@ -222,7 +233,7 @@ export function ContactMeForm() {
                     disabled={isSubmitDisabled}
                     className="w-fit rounded-lg bg-white px-6 py-2 font-bold text-black duration-200 not-disabled:cursor-pointer not-disabled:hover:scale-105 disabled:opacity-70"
                 >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                    {submitButtonLabel}
                 </button>
             </form>
         </div>
