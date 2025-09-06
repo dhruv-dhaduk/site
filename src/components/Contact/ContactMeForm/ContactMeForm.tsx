@@ -29,6 +29,10 @@ import {
     SlackIcon,
     DiscordIcon,
 } from '@/assets/icons';
+import {
+    getChannelAccountLabel,
+    getChannelAccountPlaceholder,
+} from '@/utils/contactForm';
 
 const ICON_SIZE = 20;
 
@@ -92,11 +96,11 @@ export function ContactMeForm() {
                         )}
                     </div>
                     <div className="flex flex-1 flex-col">
-                        <label htmlFor="name" className="text-[15px]">
+                        <label htmlFor="channel" className="text-[15px]">
                             Conversation Channel
                         </label>
                         <Select
-                            value={selectedChannel || 'none'}
+                            value={selectedChannel || ContactChannel.NONE}
                             onValueChange={(value) => {
                                 setValue('channel', value as ContactChannel);
                                 if (value === ContactChannel.NONE) {
@@ -107,7 +111,7 @@ export function ContactMeForm() {
                                 clearErrors('root');
                             }}
                         >
-                            <SelectTrigger className="w-full">
+                            <SelectTrigger id="channel" className="w-full">
                                 <SelectValue placeholder="Select a channel" />
                             </SelectTrigger>
                             <SelectContent>
@@ -172,15 +176,17 @@ export function ContactMeForm() {
                     </div>
                 </div>
 
-                {selectedChannel && selectedChannel !== 'none' && (
+                {selectedChannel !== ContactChannel.NONE && (
                     <div className="flex flex-col">
                         <label htmlFor="email" className="text-[15px]">
-                            Email
+                            {getChannelAccountLabel(selectedChannel)}
                         </label>
                         <Input
                             id="email"
                             type="email"
-                            placeholder="Enter Your Email"
+                            placeholder={getChannelAccountPlaceholder(
+                                selectedChannel
+                            )}
                             {...register('channelAccount')}
                         />
                         {errors.channelAccount && (
