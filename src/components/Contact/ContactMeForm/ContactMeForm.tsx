@@ -87,6 +87,7 @@ export function ContactMeForm() {
                             id="name"
                             type="text"
                             placeholder="Enter Your Name"
+                            className={`${errors.name && 'focus-visible:ring-destructive/40 focus-visible:border-destructive/70'}`}
                             {...register('name')}
                         />
                         {errors.name && (
@@ -187,6 +188,7 @@ export function ContactMeForm() {
                             placeholder={getChannelAccountPlaceholder(
                                 selectedChannel
                             )}
+                            className={`${errors.channelAccount && 'focus-visible:ring-destructive/40 focus-visible:border-destructive/70'}`}
                             {...register('channelAccount')}
                         />
                         {errors.channelAccount && (
@@ -204,7 +206,7 @@ export function ContactMeForm() {
                     <Textarea
                         id="message"
                         placeholder="How can I help ?"
-                        className={`min-h-28`}
+                        className={`min-h-28 ${errors.message && 'focus-visible:ring-destructive/40 focus-visible:border-destructive/70'}`}
                         {...register('message')}
                     ></Textarea>
                     {errors.message && (
