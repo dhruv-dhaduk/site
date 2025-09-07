@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
 
 import {
     ContactChannel,
@@ -16,6 +17,7 @@ import {
 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+
 import { InputContainer } from './InputContainer';
 import { ChannelSelector } from './ChannelSelector';
 
@@ -59,10 +61,27 @@ export function ContactMeForm() {
         (selectedChannel !== ContactChannel.NONE && !!errors.channelAccount);
 
     const onSubmit = async (data: ContactFormData) => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log(data);
-        alert('Form data is correct!');
-        reset();
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Math.random() > 0.5) resolve(true);
+                else reject(new Error('Failed to send the message.'));
+            }, 2000);
+        });
+
+        toast.promise(promise, {
+            loading: 'Sending the message...',
+            success: () => 'Message sent successfully!',
+            error: (err) =>
+                err.message || 'An error occured while sending the message.',
+        });
+
+        try {
+            await promise;
+            console.log(data);
+            reset();
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
