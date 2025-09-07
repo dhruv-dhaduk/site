@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
+import { processContactForm } from '@/server/contact';
 import {
     ContactChannel,
     ContactSchema,
@@ -61,12 +62,7 @@ export function ContactMeForm() {
         (selectedChannel !== ContactChannel.NONE && !!errors.channelAccount);
 
     const onSubmit = async (data: ContactFormData) => {
-        const promise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (Math.random() > 0.5) resolve(true);
-                else reject(new Error('Failed to send the message.'));
-            }, 2000);
-        });
+        const promise = processContactForm(data);
 
         toast.promise(promise, {
             loading: 'Sending the message...',
@@ -77,7 +73,6 @@ export function ContactMeForm() {
 
         try {
             await promise;
-            console.log(data);
             reset();
         } catch (err) {
             console.error(err);

@@ -1,4 +1,4 @@
-import { ContactChannel } from '@/schema/contact';
+import { ContactChannel, type ContactFormData } from '@/schema/contact';
 
 function getChannelAccountLabel(channel: ContactChannel.NONE): void;
 function getChannelAccountLabel(
@@ -85,8 +85,42 @@ function getSubmitButtonLabel({
     }
 }
 
+function formatFormDataForTelegram(data: ContactFormData): string {
+    // Escape MarkdownV2 reserved chars
+    const escape = (text: string) =>
+        text.replace(/([_*[\]()~`>#+\-=|{}.!])/g, '\\$1');
+
+    const name = data.name.trim();
+
+    let title = `📩 *New Contact Submission*\n\n`;
+
+    if (data.channel === ContactChannel.NONE) {
+        if (name) {
+            title = `📩 *New Message*\n\n`;
+        } else {
+            title = `📩 *New Anonymous Message*\n\n`;
+        }
+    } else {
+        title = `📩 *New Conversation Started*\n\n`;
+    }
+
+    let result = title;
+
+    if (name) result += `👤 *Name:* ${escape(name)}\n`;
+
+    if (data.channel !== ContactChannel.NONE) {
+        result += `📡 *Channel:* ${escape(data.channel)}\n`;
+        result += `🔗 *Account:* ${escape(data.channelAccount)}\n`;
+    }
+
+    result += `\n💬 *Message:*\n${escape(data.message)}`;
+
+    return result;
+}
+
 export {
     getChannelAccountLabel,
     getChannelAccountPlaceholder,
     getSubmitButtonLabel,
+    formatFormDataForTelegram,
 };
