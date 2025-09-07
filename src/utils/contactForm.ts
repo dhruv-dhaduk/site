@@ -98,7 +98,7 @@ function formatFormDataForTelegram(data: ContactFormData): string {
         if (name) {
             title = `📩 *New Message*\n\n`;
         } else {
-            title = `📩 *New Anonymous Message*\n\n`;
+            title = `📩 *New Anonymous Message*\n`;
         }
     } else {
         title = `📩 *New Conversation Started*\n\n`;
