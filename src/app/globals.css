@@ -175,4 +175,8 @@
     .text-gradient {
         @apply bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b] bg-clip-text text-transparent;
     }
+
+    .bg-gradient {
+        @apply bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b];
+    }
 }

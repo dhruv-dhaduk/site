@@ -162,7 +162,7 @@ export function ContactMeForm() {
                 )}
                 <button
                     disabled={isSubmitDisabled}
-                    className="w-fit rounded-lg bg-white px-6 py-2 font-bold text-black duration-200 not-disabled:cursor-pointer not-disabled:hover:scale-105 disabled:opacity-70"
+                    className="bg-gradient w-fit rounded-lg px-6 py-2 font-bold text-black duration-200 not-disabled:cursor-pointer not-disabled:hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70"
                 >
                     {submitButtonLabel}
                 </button>
