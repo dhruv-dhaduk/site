@@ -155,6 +155,17 @@ export function ContactMeForm() {
                 {errors.root && (
                     <div className="text-red-500">{errors.root.message}</div>
                 )}
+
+                {selectedChannel !== ContactChannel.NONE && (
+                    <div className="text-site-fg-6 text-sm">
+                        <p>
+                            The conversation will not work as backend is not
+                            ready yet.
+                        </p>
+                        <p>I will just receive your message for now.</p>
+                    </div>
+                )}
+
                 <button
                     disabled={isSubmitDisabled}
                     className="bg-gradient w-fit rounded-lg px-6 py-2 font-bold text-black duration-200 not-disabled:cursor-pointer not-disabled:hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70"
