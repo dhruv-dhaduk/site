@@ -62,7 +62,7 @@ export async function processContactForm(data: ContactFormData) {
             to: [PERSONAL_EMAIL_ADDRESS],
             cc: parsedData.channelAccount,
             replyTo: parsedData.channelAccount,
-            subject: 'Contact Dhruv Dhaduk',
+            subject: `Contact Dhruv Dhaduk | ${parsedData.name} <${parsedData.channelAccount}>`,
             react: ContactConfirmation({
                 name: parsedData.name,
                 message: parsedData.message,
