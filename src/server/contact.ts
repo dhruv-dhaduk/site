@@ -73,5 +73,13 @@ export async function processContactForm(data: ContactFormData) {
         if (response.error) {
             throw new Error(response.error.message);
         }
+
+        return {
+            message: 'Done. Check your email for confirmation.',
+        };
     }
+
+    return {
+        message: 'Message sent successfully.',
+    };
 }

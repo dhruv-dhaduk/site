@@ -66,7 +66,7 @@ export function ContactMeForm() {
 
         toast.promise(promise, {
             loading: 'Sending the message...',
-            success: () => 'Message sent successfully!',
+            success: ({ message }) => message,
             error: (err) =>
                 err.message || 'An error occured while sending the message.',
         });
