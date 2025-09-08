@@ -38,9 +38,8 @@ export async function processContactForm(data: ContactFormData) {
 
     const responseJson = await response.json();
 
-    console.log(responseJson);
-
     if (!response.ok || !responseJson.ok) {
+        console.log(responseJson);
         throw new Error('An unexpected error occured.');
     }
 }
