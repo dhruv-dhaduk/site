@@ -156,13 +156,12 @@ export function ContactMeForm() {
                     <div className="text-red-500">{errors.root.message}</div>
                 )}
 
-                {selectedChannel !== ContactChannel.NONE && (
+                {selectedChannel === ContactChannel.NONE && (
                     <div className="text-site-fg-6 text-sm">
                         <p>
-                            The conversation will not work as backend is not
-                            ready yet.
+                            Please select a conversation channel if you are
+                            expecting replies from me.
                         </p>
-                        <p>I will just receive your message for now.</p>
                     </div>
                 )}
 

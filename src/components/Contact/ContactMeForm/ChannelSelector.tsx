@@ -50,41 +50,41 @@ export function ChannelSelector({
                     <SelectItem value={ContactChannel.EMAIL}>
                         <GmailIcon /> Email
                     </SelectItem>
-                    <SelectItem value="telegram">
+                    <SelectItem value="telegram" disabled>
                         <TelegramIcon
                             style={{
                                 width: ICON_SIZE,
                                 height: ICON_SIZE,
                             }}
                         />{' '}
-                        Telegram
+                        Telegram (WIP)
                     </SelectItem>
-                    <SelectItem value="teams">
+                    <SelectItem value="teams" disabled>
                         <MicrosoftTeamsIcon
                             style={{
                                 width: ICON_SIZE,
                                 height: ICON_SIZE,
                             }}
                         />{' '}
-                        MS Teams
+                        MS Teams (WIP)
                     </SelectItem>
-                    <SelectItem value="slack">
+                    <SelectItem value="slack" disabled>
                         <SlackIcon
                             style={{
                                 width: ICON_SIZE,
                                 height: ICON_SIZE,
                             }}
                         />{' '}
-                        Slack
+                        Slack (WIP)
                     </SelectItem>
-                    <SelectItem value="discord">
+                    <SelectItem value="discord" disabled>
                         <DiscordIcon
                             style={{
                                 width: ICON_SIZE,
                                 height: ICON_SIZE,
                             }}
                         />{' '}
-                        Discord
+                        Discord (WIP)
                     </SelectItem>
                 </SelectGroup>
             </SelectContent>
