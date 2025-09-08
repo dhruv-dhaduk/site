@@ -1,5 +1,7 @@
 import { ContactMeForm } from '@/components/Contact/ContactMeForm';
 
+export const revalidate = false;
+
 export default function Contact() {
     return (
         <main className="font-plex flex flex-col gap-12 px-6 py-16">
