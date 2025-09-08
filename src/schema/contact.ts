@@ -36,7 +36,7 @@ const messageSchema = z
 export const ContactSchema = z.discriminatedUnion('channel', [
     z.object({
         channel: z.literal(ContactChannel.NONE),
-        name: z.string().trim(), // optional for "none"
+        name: z.string().trim(),
         channelAccount: z.undefined(),
         message: messageSchema,
     }),

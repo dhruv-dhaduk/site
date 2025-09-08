@@ -1,5 +1,11 @@
 import { ContactChannel, type ContactFormData } from '@/schema/contact';
 
+/**
+ * Get the label for the account input field based on the selected contact channel.
+ * @param channel - Contact channel
+ * @returns Label for the account input field based on the selected channel
+ * @returns void if channel is NONE
+ */
 function getChannelAccountLabel(channel: ContactChannel.NONE): void;
 function getChannelAccountLabel(
     channel: Exclude<ContactChannel, ContactChannel.NONE>
@@ -25,6 +31,12 @@ function getChannelAccountLabel(channel: ContactChannel): string | void {
     }
 }
 
+/**
+ * Get the placeholder text for the account input field based on the selected contact channel.
+ * @param channel - Contact channel
+ * @returns Placeholder text for the account input field based on the selected channel
+ * @returns void if channel is NONE
+ */
 function getChannelAccountPlaceholder(channel: ContactChannel.NONE): void;
 function getChannelAccountPlaceholder(
     channel: Exclude<ContactChannel, ContactChannel.NONE>
@@ -50,6 +62,11 @@ function getChannelAccountPlaceholder(channel: ContactChannel): string | void {
     }
 }
 
+/**
+ * Get the label for the submit button based on the form state.
+ * @param param0 - Form state parameters
+ * @returns Label for the submit button
+ */
 function getSubmitButtonLabel({
     channel,
     name,
@@ -85,6 +102,11 @@ function getSubmitButtonLabel({
     }
 }
 
+/**
+ * Format the contact form data into a MarkdownV2 string for Telegram.
+ * @param data - Contact form data
+ * @returns Formatted string in MarkdownV2 for Telegram
+ */
 function formatFormDataForTelegram(data: ContactFormData): string {
     // Escape MarkdownV2 reserved chars
     const escape = (text: string) =>
