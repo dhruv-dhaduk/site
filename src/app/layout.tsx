@@ -26,14 +26,14 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: 'Dhruv Dhaduk',
     description:
-        'Personal website of Dhruv Dhaduk. Includes projects, blog and wiki.',
+        'Personal website of Dhruv Dhaduk. Includes projects, blog and contact.',
     icons: {
         icon: '/logos/favicon.png',
     },
     openGraph: {
         title: 'Dhruv Dhaduk',
         description:
-            'Personal website of Dhruv Dhaduk. Includes projects, blog and wiki.',
+            'Personal website of Dhruv Dhaduk. Includes projects, blog and contact.',
         url: 'https://dhruvdhaduk.tech',
         siteName: 'Dhruv Dhaduk',
         images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Dhruv Dhaduk',
         description:
-            'Personal website of Dhruv Dhaduk. Includes projects, blog and wiki.',
+            'Personal website of Dhruv Dhaduk. Includes projects, blog and contact.',
         images: ['/images/cover_image.png'],
         creator: '@dhruvdhaduk0',
     },
@@ -61,7 +61,6 @@ export const metadata: Metadata = {
         'x64 Assembly',
         'React',
         'TypeScript',
-        'Personal Wiki',
         'Tech Blog',
         'System Programming',
         'Open Source',
