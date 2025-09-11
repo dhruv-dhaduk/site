@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import type { AssertEqual } from '@/types/utils.types';
-import type { ImageData } from './image.types';
+import type { ImageData } from '$/image/schemas/image.schema';
 
 type DefaultImageProps = { type: 'html' } & React.DetailedHTMLProps<
     React.ImgHTMLAttributes<HTMLImageElement>,

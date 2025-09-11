@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ImageSchema } from '@/image';
+import { ImageSchema } from '@/features/image';
 
 export const ProjectSchema = z.object({
     id: z.string().trim().nonempty(),

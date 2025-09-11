@@ -1,4 +1,4 @@
-import { SmartImage } from '@/image';
+import { SmartImage } from '@/features/image';
 import type { Project } from '$/projects/schemas/project.schema';
 import { DownloadIcon, GitHubIcon, NpmIcon, WebsiteIcon } from '@/assets/icons';
 
