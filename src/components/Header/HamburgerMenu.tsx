@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { HamburgerIcon } from '@/assets/icons/Hamburger';
-import { CloseIcon } from '@/assets/icons/Close';
+
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover';
+import { HamburgerIcon, CloseIcon } from '@/assets/icons';
+
 import { NavLink } from './NavLink';
 import type { ActivePage } from './types';
 

@@ -1,12 +1,14 @@
 import Link from 'next/link';
-
-import { LocationIcon } from '@/assets/icons/Location';
-import { ProjectsIcon } from '@/assets/icons/Projects';
-import { BlogIcon } from '@/assets/icons/Blog';
-import { GitHubIcon } from '@/assets/icons/GitHub';
-import { LinkedInIcon } from '@/assets/icons/LinkedIn';
-import { EmailIcon } from '@/assets/icons/Email';
 import { UserRoundSearch } from 'lucide-react';
+
+import {
+    LocationIcon,
+    ProjectsIcon,
+    BlogIcon,
+    GitHubIcon,
+    LinkedInIcon,
+    EmailIcon,
+} from '@/assets/icons';
 
 export const revalidate = false;
 
