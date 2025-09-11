@@ -1,6 +1,7 @@
 import { fetchProjects } from '@/services/projects';
-import { ProjectCard } from '@/components/Projects/ProjectCard';
 import { ErrorScreen } from '@/components/ErrorScreen';
+
+import { ProjectCard } from './ProjectCard';
 
 export async function ProjectList() {
     try {
