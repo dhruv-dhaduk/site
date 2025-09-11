@@ -4,17 +4,17 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { processContactForm } from '@/server/contact';
+import { processContactForm } from '$/contact/server/submit';
 import {
     ContactChannel,
     ContactSchema,
     type ContactFormData,
-} from '@/schema/contact';
+} from '$/contact/schemas/contact.schema';
 import {
     getChannelAccountLabel,
     getChannelAccountPlaceholder,
     getSubmitButtonLabel,
-} from '@/utils/contactForm';
+} from '$/contact/utils';
 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';

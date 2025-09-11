@@ -5,10 +5,10 @@ import {
     ContactChannel,
     ContactSchema,
     type ContactFormData,
-} from '@/schema/contact';
-import { formatFormDataForTelegram } from '@/utils/contactForm';
+} from '$/contact/schemas/contact.schema';
+import { formatFormDataForTelegram } from '$/contact/utils';
 
-import { ContactConfirmation } from '@/components/Contact/ContactEmailTemplate';
+import { ContactEmailTemplate } from '$/contact/components/ContactEmailTemplate';
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
@@ -63,7 +63,7 @@ export async function processContactForm(data: ContactFormData) {
             cc: parsedData.channelAccount,
             replyTo: parsedData.channelAccount,
             subject: `Contact Dhruv Dhaduk | ${parsedData.name} <${parsedData.channelAccount}>`,
-            react: ContactConfirmation({
+            react: ContactEmailTemplate({
                 name: parsedData.name,
                 message: parsedData.message,
                 email: parsedData.channelAccount,

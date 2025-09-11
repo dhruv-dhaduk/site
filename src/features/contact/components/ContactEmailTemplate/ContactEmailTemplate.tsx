@@ -1,12 +1,14 @@
-export function ContactConfirmation({
-    name,
-    email,
-    message,
-}: {
+interface ContactEmailTemplateProps {
     name: string;
     email: string;
     message: string;
-}) {
+}
+
+export function ContactEmailTemplate({
+    name,
+    email,
+    message,
+}: ContactEmailTemplateProps) {
     return (
         <html>
             <body

@@ -1,4 +1,4 @@
-import { ContactChannel } from '@/schema/contact';
+import { ContactChannel } from '$/contact/schemas/contact.schema';
 
 import {
     Select,

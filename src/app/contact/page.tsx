@@ -1,4 +1,4 @@
-import { ContactMeForm } from '@/components/Contact/ContactMeForm';
+import { ContactMeForm } from '@/features/contact';
 
 export const revalidate = false;
 

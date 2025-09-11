@@ -1,1 +1,0 @@
-export { ContactConfirmation } from './ContactEmailTemplate';
