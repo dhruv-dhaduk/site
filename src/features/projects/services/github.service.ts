@@ -1,5 +1,7 @@
-import { ProjectListSchema } from '@/schema/projects';
-import type { Project } from '@/types/project.types';
+import {
+    ProjectListSchema,
+    type Project,
+} from '$/projects/schemas/project.schema';
 
 const PROJECTS_DATA_URL =
     'https://api.github.com/repos/dhruv-dhaduk/vault/contents/projects/projects.json';

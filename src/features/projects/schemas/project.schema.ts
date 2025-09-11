@@ -14,3 +14,5 @@ export const ProjectSchema = z.object({
 });
 
 export const ProjectListSchema = z.array(ProjectSchema);
+
+export type Project = z.infer<typeof ProjectSchema>;

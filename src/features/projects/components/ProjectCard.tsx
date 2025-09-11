@@ -1,5 +1,5 @@
 import { SmartImage } from '@/image';
-import type { Project } from '@/types/project.types';
+import type { Project } from '$/projects/schemas/project.schema';
 import { DownloadIcon, GitHubIcon, NpmIcon, WebsiteIcon } from '@/assets/icons';
 
 interface ProjectCardProps {
