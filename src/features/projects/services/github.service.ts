@@ -1,3 +1,4 @@
+import { env } from '@/env';
 import {
     ProjectListSchema,
     type Project,
@@ -17,7 +18,7 @@ export async function fetchProjects(): Promise<Array<Project>> {
         // Fetch the projects data from the GitHub repository
         const response = await fetch(PROJECTS_DATA_URL, {
             headers: {
-                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+                Authorization: `Bearer ${env.GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3.raw',
             },
         });

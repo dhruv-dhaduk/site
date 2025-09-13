@@ -2,6 +2,8 @@ import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
+import { env } from '@/env';
+
 // This route handles GitHub webhook events to revalidate the pages.
 export async function POST(req: NextRequest) {
     // Extract the signature from the request headers
@@ -15,19 +17,11 @@ export async function POST(req: NextRequest) {
         );
     }
 
-    // Ensure the GITHUB_WEBHOOK_SECRET environment variable is set
-    if (!process.env.GITHUB_WEBHOOK_SECRET) {
-        return NextResponse.json(
-            { error: 'GITHUB_WEBHOOK_SECRET not set' },
-            { status: 500 }
-        );
-    }
-
     // Read the raw body of the request to compute the HMAC
     const rawBody = await req.text();
 
     // Compute the HMAC using the secret and the raw body
-    const hmac = crypto.createHmac('sha256', process.env.GITHUB_WEBHOOK_SECRET);
+    const hmac = crypto.createHmac('sha256', env.GITHUB_WEBHOOK_SECRET);
     const digest = 'sha256=' + hmac.update(rawBody).digest('hex');
 
     // Compare the computed HMAC with the signature from the header
