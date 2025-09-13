@@ -4,6 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+
 import { processContactForm } from '$/contact/server/submit';
 import {
     ContactChannel,
@@ -15,9 +18,6 @@ import {
     getChannelAccountPlaceholder,
     getSubmitButtonLabel,
 } from '$/contact/utils';
-
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 
 import { InputContainer } from './InputContainer';
 import { ChannelSelector } from './ChannelSelector';

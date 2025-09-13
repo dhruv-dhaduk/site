@@ -1,5 +1,3 @@
-import { ContactChannel } from '$/contact/schemas/contact.schema';
-
 import {
     Select,
     SelectContent,
@@ -9,7 +7,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-
 import {
     BanIcon,
     GmailIcon,
@@ -18,6 +15,8 @@ import {
     SlackIcon,
     DiscordIcon,
 } from '@/assets/icons';
+
+import { ContactChannel } from '$/contact/schemas/contact.schema';
 
 const ICON_SIZE = 20;
 

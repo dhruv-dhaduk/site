@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { ErrorScreen } from '@/components/ErrorScreen';
 
 interface ErrorProps {

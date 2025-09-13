@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono, IBM_Plex_Mono, Inter } from 'next/font/google';
-import { ProgressBarProvider } from '@/components//ProgressBarProvider';
-import './globals.css';
-import { Toaster } from '@/components/ui/sonner';
+
 import '@/env';
+import { ProgressBarProvider } from '@/components/ProgressBarProvider';
+import { Toaster } from '@/components/ui/sonner';
+
+import './globals.css';
 
 const jetBrainsMono = JetBrains_Mono({
     subsets: ['latin'],

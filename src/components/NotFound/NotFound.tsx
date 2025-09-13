@@ -1,5 +1,5 @@
-import { Terminal } from 'lucide-react';
 import Link from 'next/link';
+import { Terminal } from 'lucide-react';
 
 export function NotFound() {
     return (

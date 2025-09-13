@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import { NavLink } from './NavLink';
 import { HamburgerMenu } from './HamburgerMenu';
 import type { ActivePage } from './types';

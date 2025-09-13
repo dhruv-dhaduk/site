@@ -1,5 +1,6 @@
-import { fetchProjects } from '$/projects/services/github.service';
 import { ErrorScreen } from '@/components/ErrorScreen';
+
+import { fetchProjects } from '$/projects/services/github.service';
 
 import { ProjectCard } from './ProjectCard';
 

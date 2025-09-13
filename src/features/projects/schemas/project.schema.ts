@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 import { ImageSchema } from '@/features/image';
 
 export const ProjectSchema = z.object({

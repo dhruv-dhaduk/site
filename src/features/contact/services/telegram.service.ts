@@ -2,8 +2,8 @@ import 'server-only';
 
 import { env } from '@/env';
 
-import { type ContactFormData } from '$/contact/schemas/contact.schema';
 import { formatFormDataForTelegram } from '$/contact/utils';
+import { type ContactFormData } from '$/contact/schemas/contact.schema';
 
 /**
  * Logs a message to predefined Telegram chat using the Telegram Bot API.
