@@ -20,6 +20,9 @@ export function Header({ activePage }: HeaderProps) {
         case 'contact':
             command = 'ping me';
             break;
+        default:
+            const _exhaustiveCheck: never = activePage;
+            return _exhaustiveCheck;
     }
 
     return (
