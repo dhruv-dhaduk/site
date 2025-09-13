@@ -1,7 +1,7 @@
 'use server';
 
-import { logMessageToTelegram } from '$/contact/services/telegram';
-import { startEmailConversation } from '$/contact/services/resend';
+import { logMessageToTelegram } from '$/contact/services/telegram.service';
+import { startEmailConversation } from '$/contact/services/resend.service';
 import {
     ContactChannel,
     ContactSchema,
