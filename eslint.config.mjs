@@ -19,6 +19,14 @@ const eslintConfig = [
                     elements: ['img'],
                     img: ['SmartImage', 'Image']
                 }
+            ],
+            'no-restricted-properties': [
+                'error',
+                {
+                    object: 'process',
+                    property: 'env',
+                    message: 'Use `env` from `@/env` instead of `process.env`.'
+                }
             ]
         },
     },
