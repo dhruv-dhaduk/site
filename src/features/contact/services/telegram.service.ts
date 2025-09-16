@@ -1,4 +1,5 @@
 import 'server-only';
+import axios from 'axios';
 
 import { env } from '@/env';
 
@@ -16,20 +17,14 @@ export async function logMessageToTelegram(
     const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
     const text = formatFormDataForTelegram(data);
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: env.TELEGRAM_CHAT_ID,
-            text,
-            parse_mode: 'MarkdownV2',
-        }),
+    const response = await axios.post(url, {
+        chat_id: env.TELEGRAM_CHAT_ID,
+        text,
+        parse_mode: 'MarkdownV2',
     });
 
-    const responseJson = await response.json();
-
-    if (!response.ok || !responseJson.ok) {
-        console.log(responseJson);
+    if (!response.data.ok) {
+        console.log(response.data);
         throw new Error('An unexpected error occured.');
     }
 }
