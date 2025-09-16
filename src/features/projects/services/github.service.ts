@@ -1,4 +1,5 @@
 import 'server-only';
+import axios from 'axios';
 
 import { env } from '@/env';
 
@@ -19,21 +20,15 @@ const PROJECTS_DATA_URL =
 export async function fetchProjects(): Promise<Array<Project>> {
     try {
         // Fetch the projects data from the GitHub repository
-        const response = await fetch(PROJECTS_DATA_URL, {
+        const response = await axios.get(PROJECTS_DATA_URL, {
             headers: {
                 Authorization: `Bearer ${env.GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3.raw',
             },
         });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
 
-        // Validate the fetched data against the ProjectListSchema
-        const projects = ProjectListSchema.parse(data);
-
-        return projects;
+        // Validate the fetched data against the ProjectListSchema and return it
+        return ProjectListSchema.parse(response.data);
     } catch (error) {
         console.error('Error fetching projects:', error);
         throw error;
