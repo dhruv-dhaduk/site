@@ -8,8 +8,7 @@ import {
     type Project,
 } from '$/projects/schemas/project.schema';
 
-const PROJECTS_DATA_URL =
-    'https://api.github.com/repos/dhruv-dhaduk/vault/contents/projects/projects.json';
+const PROJECTS_DATA_URL = `${env.GITHUB_VAULT_URL}/contents/projects/projects.json`;
 
 /**
  * Fetches the list of projects from the GitHub repository.
