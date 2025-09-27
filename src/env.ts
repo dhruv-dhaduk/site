@@ -12,6 +12,9 @@ export const env = createEnv({
         RESEND_API_KEY: z.string().min(1),
         RESEND_EMAIL_ADDRESS: z.string().min(1).email(),
         PERSONAL_EMAIL_ADDRESS: z.string().min(1).email(),
+        TELEGRAM_API_ID: z.string().min(1),
+        TELEGRAM_API_HASH: z.string().min(1),
+        TELEGRAM_SESSION_TOKEN: z.string().min(1),
     },
     runtimeEnv: {
         GITHUB_TOKEN: process.env.GITHUB_TOKEN,
@@ -22,5 +25,8 @@ export const env = createEnv({
         RESEND_API_KEY: process.env.RESEND_API_KEY,
         RESEND_EMAIL_ADDRESS: process.env.RESEND_EMAIL_ADDRESS,
         PERSONAL_EMAIL_ADDRESS: process.env.PERSONAL_EMAIL_ADDRESS,
+        TELEGRAM_API_ID: process.env.TELEGRAM_API_ID,
+        TELEGRAM_API_HASH: process.env.TELEGRAM_API_HASH,
+        TELEGRAM_SESSION_TOKEN: process.env.TELEGRAM_SESSION_TOKEN,
     },
 });
