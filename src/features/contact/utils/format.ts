@@ -40,3 +40,20 @@ export function formatFormDataForTelegram(data: ContactFormData): string {
 
     return result;
 }
+
+/**
+ * Format a Telegram DM message.
+ * @param message - The message to format
+ * @returns The formatted message
+ */
+export function formatTelegramDM(message: string): string {
+    return `
+<b>Hello!</b><br></br>
+You just tried to contact me via my website.<br><br>
+Here's the message you sent:<br>
+<pre>${message}</pre><br>
+This is an <i>automated message</i> to confirm I received your message.<br>
+I will get back to you as soon as possible.<br><br>
+Thank you for reaching out!
+`;
+}

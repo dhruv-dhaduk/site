@@ -49,14 +49,14 @@ export function ChannelSelector({
                     <SelectItem value={ContactChannel.EMAIL}>
                         <GmailIcon /> Email
                     </SelectItem>
-                    <SelectItem value="telegram" disabled>
+                    <SelectItem value="telegram">
                         <TelegramIcon
                             style={{
                                 width: ICON_SIZE,
                                 height: ICON_SIZE,
                             }}
                         />{' '}
-                        Telegram (WIP)
+                        Telegram
                     </SelectItem>
                     <SelectItem value="teams" disabled>
                         <MicrosoftTeamsIcon
