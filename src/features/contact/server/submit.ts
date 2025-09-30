@@ -39,7 +39,11 @@ export async function processContactForm(
                 message: 'Done. Check your email for confirmation.',
             };
         case ContactChannel.TELEGRAM:
-            await sendTelegramDM(parsedData.channelAccount, parsedData.message);
+            await sendTelegramDM(
+                parsedData.channelAccount,
+                parsedData.name,
+                parsedData.message
+            );
             return {
                 message: 'Done. Check your Telegram for confirmation.',
             };

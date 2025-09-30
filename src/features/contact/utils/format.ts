@@ -36,24 +36,22 @@ export function formatFormDataForTelegram(data: ContactFormData): string {
         result += `🔗 *Account:* ${escape(data.channelAccount)}\n`;
     }
 
-    result += `\n💬 *Message:*\n${escape(data.message)}`;
+    result += `\n💬 *Message:*\n\`\`\`\n${escape(data.message)}\n\`\`\``;
 
     return result;
 }
 
 /**
  * Format a Telegram DM message.
+ * @param name - The name of the user
  * @param message - The message to format
  * @returns The formatted message
  */
-export function formatTelegramDM(message: string): string {
+export function formatTelegramDM(name: string, message: string): string {
     return `
-<b>Hello!</b><br></br>
-You just tried to contact me via my website.<br><br>
-Here's the message you sent:<br>
+<b>Hi ${name},</b><br></br>
+Thanks for reaching out! I just received you message from dhruvdhaduk.tech: <br><br>
 <pre>${message}</pre><br>
-This is an <i>automated message</i> to confirm I received your message.<br>
-I will get back to you as soon as possible.<br><br>
-Thank you for reaching out!
+This is an <i>automated confirmation</i> to let you know it came through. I will get back to you as soon as possible.<br>
 `;
 }

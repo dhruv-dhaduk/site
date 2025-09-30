@@ -34,10 +34,12 @@ export async function logMessageToTelegram(
 /**
  * Send a direct message to a Telegram user.
  * @param username - The username of the recipient
+ * @param name - The name of the user
  * @param message - The message to send
  */
 export async function sendTelegramDM(
     username: string,
+    name: string,
     message: string
 ): Promise<void> {
     const stringSession = new StringSession(env.TELEGRAM_SESSION_TOKEN);
@@ -54,7 +56,7 @@ export async function sendTelegramDM(
     await client.connect();
 
     await client.sendMessage(username, {
-        message: formatTelegramDM(message),
+        message: formatTelegramDM(name, message),
         parseMode: 'html',
     });
 
