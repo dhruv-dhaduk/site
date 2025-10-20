@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { tryCatch } from '@/utils/tryCatch';
 
 import { processContactForm } from '$/contact/server/submit';
 import {
@@ -45,11 +46,11 @@ export function ContactMeForm() {
             error: (err) =>
                 err.message || 'An error occured while sending the message.',
         });
-        try {
-            await promise;
+        const [, error] = await tryCatch(promise);
+        if (error) {
+            console.error(error);
+        } else {
             reset();
-        } catch (err) {
-            console.error(err);
         }
     };
 

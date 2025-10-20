@@ -2,6 +2,7 @@ import 'server-only';
 import axios from 'axios';
 
 import { env } from '@/env';
+import { tryCatch } from '@/utils/tryCatch';
 
 import {
     ProjectListSchema,
@@ -17,19 +18,19 @@ const PROJECTS_DATA_URL = `${env.GITHUB_VAULT_URL}/contents/projects/projects.js
  * @throws Will throw an error  if the fetch operation fails or if the data does not match the expected schema.
  */
 export async function fetchProjects(): Promise<Array<Project>> {
-    try {
-        // Fetch the projects data from the GitHub repository
-        const response = await axios.get(PROJECTS_DATA_URL, {
+    const [response, error] = await tryCatch(
+        axios.get(PROJECTS_DATA_URL, {
             headers: {
                 Authorization: `Bearer ${env.GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3.raw',
             },
-        });
+        })
+    );
 
-        // Validate the fetched data against the ProjectListSchema and return it
-        return ProjectListSchema.parse(response.data);
-    } catch (error) {
+    if (error) {
         console.error('Error fetching projects:', error);
         throw error;
     }
+
+    return ProjectListSchema.parse(response.data);
 }
