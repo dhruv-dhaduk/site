@@ -9,7 +9,7 @@ export async function ProjectList() {
         const projects = await fetchProjects();
 
         return (
-            <div className="grid-cols-auto-fit grid gap-8">
+            <div className="grid-cols-auto-fit flex flex-col gap-8 sm:grid">
                 {projects.map((project) => (
                     <ProjectCard key={project.id} project={project} />
                 ))}
