@@ -19,9 +19,9 @@ export default function Home() {
                 {/* Intro */}
                 <div className="flex flex-col gap-2">
                     <p className="text-site-fg-6 text-sm">{`Hi I'm`}</p>
-                    <h1 className="font-inter flex items-end gap-4 text-5xl font-bold">
+                    <h1 className="font-inter flex items-end gap-4 text-4xl font-bold sm:text-5xl">
                         <span className="text-gradient">Dhruv Dhaduk</span>
-                        <span className="animate-blink bg-site-fg mb-1 hidden h-2 w-6 sm:block" />
+                        <span className="animate-blink bg-site-fg mb-1 block h-2 w-6 sm:block" />
                     </h1>
                     <p className="text-site-fg-4 flex items-center gap-1.5">
                         <LocationIcon className="h-5 w-5" />
@@ -30,7 +30,7 @@ export default function Home() {
                 </div>
 
                 {/* Description */}
-                <p className="text-site-fg-5 text-lg leading-relaxed">
+                <p className="text-site-fg-5 leading-relaxed sm:text-lg">
                     I explore systems from inside out — from x64 to TypeScript,
                     from memory to markup.
                     <br />
@@ -39,21 +39,25 @@ export default function Home() {
                 </p>
 
                 {/* Internal Site Links */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-2 sm:gap-4">
                     <NavLink
                         href="/projects"
                         label="Projects"
-                        icon={<ProjectsIcon className="h-7 w-7" />}
+                        icon={
+                            <ProjectsIcon className="h-5 w-5 sm:h-7 sm:w-7" />
+                        }
                     />
                     <NavLink
                         href="/blog"
                         label="Blog"
-                        icon={<BlogIcon className="h-6 w-6" />}
+                        icon={<BlogIcon className="h-4 w-4 sm:h-6 sm:w-6" />}
                     />
                     <NavLink
                         href="/contact"
                         label="Contact Me"
-                        icon={<UserRoundSearch className="h-6 w-6" />}
+                        icon={
+                            <UserRoundSearch className="h-4 w-4 sm:h-6 sm:w-6" />
+                        }
                     />
                 </div>
 
@@ -65,7 +69,7 @@ export default function Home() {
                         rel="noopener noreferrer"
                         aria-label="GitHub Profile (Opens in new tab)"
                     >
-                        <GitHubIcon className="h-8 w-8 hover:text-white" />
+                        <GitHubIcon className="h-6 w-6 hover:text-white sm:h-8 sm:w-8" />
                     </a>
 
                     <a
@@ -74,14 +78,14 @@ export default function Home() {
                         rel="noopener noreferrer"
                         aria-label="LinkedIn Profile (Opens in new tab)"
                     >
-                        <LinkedInIcon className="hover:text-brand-linkedin h-8 w-8" />
+                        <LinkedInIcon className="hover:text-brand-linkedin h-6 w-6 sm:h-8 sm:w-8" />
                     </a>
 
                     <a
                         href="mailto:dhadukd44@gmail.com"
                         aria-label="Email Dhruv Dhaduk"
                     >
-                        <EmailIcon className="hover:text-brand-gmail h-10" />
+                        <EmailIcon className="hover:text-brand-gmail h-8 sm:h-10" />
                     </a>
                 </div>
             </div>
@@ -99,7 +103,7 @@ function NavLink({ icon, href, label }: NavLinkProps) {
     return (
         <Link
             href={href}
-            className="text-site-fg bg-site-bg-1 hover:bg-site-bg-3 border-site-border-1 flex items-center gap-2 rounded-xl border px-5 py-3 transition"
+            className="text-site-fg bg-site-bg-1 hover:bg-site-bg-3 border-site-border-1 flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm transition sm:rounded-xl sm:px-5 sm:py-3 sm:text-base"
         >
             {icon}
             <span>{label}</span>
