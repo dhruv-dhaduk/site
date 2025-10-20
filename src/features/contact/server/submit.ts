@@ -1,12 +1,7 @@
 'use server';
 
+import { logMessageToTelegram } from '$/contact/services/telegram.service';
 import {
-    logMessageToTelegram,
-    sendTelegramDM,
-} from '$/contact/services/telegram.service';
-import { startEmailConversation } from '$/contact/services/resend.service';
-import {
-    ContactChannel,
     ContactSchema,
     type ContactFormData,
 } from '$/contact/schemas/contact.schema';
@@ -28,28 +23,7 @@ export async function processContactForm(
 
     await logMessageToTelegram(parsedData);
 
-    switch (parsedData.channel) {
-        case ContactChannel.EMAIL:
-            await startEmailConversation(
-                parsedData.name,
-                parsedData.channelAccount,
-                parsedData.message
-            );
-            return {
-                message: 'Done. Check your email for confirmation.',
-            };
-        case ContactChannel.TELEGRAM:
-            await sendTelegramDM(
-                parsedData.channelAccount,
-                parsedData.name,
-                parsedData.message
-            );
-            return {
-                message: 'Done. Check your Telegram for confirmation.',
-            };
-        default:
-            return {
-                message: 'Message sent successfully.',
-            };
-    }
+    return {
+        message: 'Message sent successfully.',
+    };
 }
