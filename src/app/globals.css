@@ -162,6 +162,37 @@
         place-content: center;
     }
 
+    .no-scrollbar {
+        scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .fade-edges::before,
+    .fade-edges::after,
+    .fade-edge-left::before,
+    .fade-edge-right::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 3rem;
+        z-index: 10;
+    }
+
+    .fade-edges::before,
+    .fade-edge-left::before {
+        left: 0;
+        background: linear-gradient(to right, black, transparent);
+    }
+
+    .fade-edges::after,
+    .fade-edge-right::after {
+        right: 0;
+        background: linear-gradient(to right, transparent, black);
+    }
+
     @keyframes blink {
         50% {
             opacity: 0;

@@ -1,15 +1,14 @@
+import { BlogList } from '@/features/blog';
+
 export const revalidate = false;
 
 export default function Blog() {
     return (
-        <div className="flex min-h-dvh flex-col items-center justify-center">
-            <h1 className="font-inter mb-4 text-4xl font-bold">Blog</h1>
-            <p className="font-plex text-lg text-gray-600">
-                This page is under construction.
-            </p>
-            <p className="font-plex text-lg text-gray-600">
-                Stay tuned for updates!
-            </p>
-        </div>
+        <main className="font-plex mx-auto flex w-full max-w-[50rem] flex-col gap-12 px-4 py-10 sm:px-6 sm:py-16">
+            <h1 className="font-inter flex items-end gap-4 overflow-visible text-4xl font-bold sm:text-[44px]">
+                <span className="text-gradient">Blog</span>
+            </h1>
+            <BlogList />
+        </main>
     );
 }
