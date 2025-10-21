@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 import { UserRoundSearch } from 'lucide-react';
 
 import {
@@ -96,7 +97,7 @@ export default function Home() {
 interface NavLinkProps {
     label: string;
     icon: React.ReactNode;
-    href: string;
+    href: Route;
 }
 
 function NavLink({ icon, href, label }: NavLinkProps) {

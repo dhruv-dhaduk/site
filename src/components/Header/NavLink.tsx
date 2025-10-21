@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 
 interface NavLinkProps {
-    href: string;
+    href: Route;
     label: string;
     isActive?: boolean;
 }
