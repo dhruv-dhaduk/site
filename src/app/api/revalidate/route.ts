@@ -1,9 +1,10 @@
 import crypto from 'crypto';
 
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 import { env } from '@/env';
+import { CACHE_TAGS } from '@/constants/cacheTags';
 
 // This route handles GitHub webhook events to revalidate the pages.
 export async function POST(req: NextRequest) {
@@ -41,8 +42,7 @@ export async function POST(req: NextRequest) {
 
     // If the signature is valid, proceed to revalidate the path
     try {
-        // Revalidate the paths to update the cache
-        revalidatePath('/projects');
+        revalidateTag(CACHE_TAGS.PROJECTS, 'max');
         revalidatePath('/blog');
 
         return NextResponse.json(
