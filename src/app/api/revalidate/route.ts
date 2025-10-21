@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
     try {
         // Revalidate the paths to update the cache
         revalidatePath('/projects');
+        revalidatePath('/blog');
 
         return NextResponse.json(
             { message: 'Revalidation successful', revalidated: true },
