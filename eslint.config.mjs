@@ -1,12 +1,8 @@
+// eslint-disable-next-line import/no-unresolved
 import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+// eslint-disable-next-line import/no-unresolved
 import nextTypescript from "eslint-config-next/typescript";
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
 import importPlugin from 'eslint-plugin-import';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
     plugins: {

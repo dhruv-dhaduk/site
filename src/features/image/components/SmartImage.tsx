@@ -57,6 +57,7 @@ export function SmartImage(props: SmartImageProps) {
 
     // Effect to set the component as client-side rendered
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClient(true);
     }, []);
 
