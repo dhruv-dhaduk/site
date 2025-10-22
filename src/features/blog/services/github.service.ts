@@ -15,7 +15,7 @@ const BLOGS_LIST_URL = `${env.GITHUB_VAULT_URL}/contents/blog/index.json`;
  * @throws Will throw an error if the fetch operation fails or if the data does not match the expected schema.
  */
 export async function fetchBlogsList(): Promise<Array<Blog>> {
-    const [response, error] = await tryCatch(
+    const [response, fetch_error] = await tryCatch(
         axios.get(BLOGS_LIST_URL, {
             headers: {
                 Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -24,10 +24,17 @@ export async function fetchBlogsList(): Promise<Array<Blog>> {
         })
     );
 
-    if (error) {
-        console.error('Error fetching blogs list:', error);
-        throw error;
+    if (fetch_error) {
+        console.error('Error fetching blogs list:', fetch_error);
+        throw new Error(`HTTP error`);
     }
 
-    return BlogListSchema.parse(response.data);
+    const blogsList = BlogListSchema.safeParse(response.data);
+
+    if (!blogsList.success) {
+        console.error('Error validating blogs list data:', blogsList.error);
+        throw new Error('Blogs list data validation failed');
+    }
+
+    return blogsList.data;
 }

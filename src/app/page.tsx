@@ -11,8 +11,6 @@ import {
     EmailIcon,
 } from '@/assets/icons';
 
-export const revalidate = false;
-
 export default function Home() {
     return (
         <main className="font-plex bg-site-bg flex min-h-dvh items-center justify-center px-6 py-16">

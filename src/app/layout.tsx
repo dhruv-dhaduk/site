@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { JetBrains_Mono, IBM_Plex_Mono, Inter } from 'next/font/google';
 
 import '@/env';
-import { ProgressBarProvider } from '@/components/ProgressBarProvider';
 import { Toaster } from '@/components/ui/sonner';
 
 import './globals.css';
@@ -99,7 +98,7 @@ export default function RootLayout({
             <body
                 className={`${jetBrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
             >
-                <ProgressBarProvider>{children}</ProgressBarProvider>
+                {children}
                 <Toaster theme="dark" richColors />
             </body>
         </html>

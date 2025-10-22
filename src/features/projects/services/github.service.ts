@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { env } from '@/env';
 import { tryCatch } from '@/utils/tryCatch';
-import { CACHE_TAGS } from '@/constants/cacheTags';
 
 import {
     ProjectListSchema,
@@ -20,30 +19,20 @@ const PROJECTS_DATA_URL = `${env.GITHUB_VAULT_URL}/contents/projects/projects.js
  */
 export async function fetchProjects(): Promise<Array<Project>> {
     const [response, fetch_error] = await tryCatch(
-        fetch(PROJECTS_DATA_URL, {
+        axios.get(PROJECTS_DATA_URL, {
             headers: {
                 Authorization: `Bearer ${env.GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3.raw',
             },
-            next: {
-                tags: [CACHE_TAGS.PROJECTS],
-            },
         })
     );
 
-    if (fetch_error || !response.ok) {
+    if (fetch_error) {
         console.error('Error fetching projects:', fetch_error);
-        throw new Error(`HTTP error! status: ${response?.status}`);
+        throw new Error(`HTTP error!`);
     }
 
-    const [data, parse_error] = await tryCatch(response.json());
-
-    if (parse_error) {
-        console.error('Error parsing JSON:', parse_error);
-        throw new Error('Failed to parse JSON response');
-    }
-
-    const projects = ProjectListSchema.safeParse(data);
+    const projects = ProjectListSchema.safeParse(response.data);
 
     if (!projects.success) {
         console.error('Error validating projects data:', projects.error);
