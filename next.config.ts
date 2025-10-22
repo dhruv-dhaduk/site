@@ -4,11 +4,6 @@ const nextConfig: NextConfig = {
     /* config options here */
     typedRoutes: true,
     cacheComponents: true,
-    logging: {
-        fetches: {
-            fullUrl: true,
-        },
-    },
     images: {
         remotePatterns: [
             {

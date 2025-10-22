@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath, revalidateTag } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 
 import { env } from '@/env';
 import { CACHE_TAGS } from '@/constants/cacheTags';
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     // If the signature is valid, proceed to revalidate the path
     try {
         revalidateTag(CACHE_TAGS.PROJECTS, 'max');
-        revalidatePath('/blog');
+        revalidateTag(CACHE_TAGS.BLOG.LIST, 'max');
 
         return NextResponse.json(
             { message: 'Revalidation successful', revalidated: true },

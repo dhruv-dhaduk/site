@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import { BlogList } from '@/features/blog';
 
 export default function Blog() {
@@ -8,9 +6,7 @@ export default function Blog() {
             <h1 className="font-inter flex items-end gap-4 overflow-visible text-4xl font-bold sm:text-[44px]">
                 <span className="text-gradient">Blog</span>
             </h1>
-            <Suspense fallback={<p>Loading blogs...</p>}>
-                <BlogList />
-            </Suspense>
+            <BlogList />
         </main>
     );
 }

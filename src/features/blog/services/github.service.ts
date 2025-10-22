@@ -1,8 +1,10 @@
 import 'server-only';
 import axios from 'axios';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import { env } from '@/env';
 import { tryCatch } from '@/utils/tryCatch';
+import { CACHE_TAGS } from '@/constants/cacheTags';
 
 import { BlogListSchema, type Blog } from '$/blog/schemas/blog.schema';
 
@@ -15,6 +17,10 @@ const BLOGS_LIST_URL = `${env.GITHUB_VAULT_URL}/contents/blog/index.json`;
  * @throws Will throw an error if the fetch operation fails or if the data does not match the expected schema.
  */
 export async function fetchBlogsList(): Promise<Array<Blog>> {
+    'use cache';
+    cacheLife('max');
+    cacheTag(CACHE_TAGS.BLOG.LIST);
+
     const [response, fetch_error] = await tryCatch(
         axios.get(BLOGS_LIST_URL, {
             headers: {

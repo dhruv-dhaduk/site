@@ -1,8 +1,10 @@
 import 'server-only';
 import axios from 'axios';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import { env } from '@/env';
 import { tryCatch } from '@/utils/tryCatch';
+import { CACHE_TAGS } from '@/constants/cacheTags';
 
 import {
     ProjectListSchema,
@@ -18,6 +20,10 @@ const PROJECTS_DATA_URL = `${env.GITHUB_VAULT_URL}/contents/projects/projects.js
  * @throws Will throw an error  if the fetch operation fails or if the data does not match the expected schema.
  */
 export async function fetchProjects(): Promise<Array<Project>> {
+    'use cache';
+    cacheLife('max');
+    cacheTag(CACHE_TAGS.PROJECTS);
+
     const [response, fetch_error] = await tryCatch(
         axios.get(PROJECTS_DATA_URL, {
             headers: {
