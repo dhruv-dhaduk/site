@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
 
     // Read the raw body of the request to compute the HMAC
     const rawBody = await req.text();
+    console.log('Raw body received for revalidation:', rawBody);
 
     // Compute the HMAC using the secret and the raw body
     const hmac = crypto.createHmac('sha256', env.GITHUB_WEBHOOK_SECRET);

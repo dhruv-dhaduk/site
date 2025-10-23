@@ -24,6 +24,7 @@ export async function fetchProjects(): Promise<Array<Project>> {
     cacheLife('max');
     cacheTag(CACHE_TAGS.PROJECTS);
 
+    console.log('Fetching projects from GitHub...');
     const [response, fetch_error] = await tryCatch(
         axios.get(PROJECTS_DATA_URL, {
             headers: {

@@ -21,6 +21,7 @@ export async function fetchBlogsList(): Promise<Array<Blog>> {
     cacheLife('max');
     cacheTag(CACHE_TAGS.BLOG.LIST);
 
+    console.log('Fetching blogs list from GitHub...');
     const [response, fetch_error] = await tryCatch(
         axios.get(BLOGS_LIST_URL, {
             headers: {
