@@ -21,6 +21,7 @@ export async function processContactForm(
 
     const parsedData = parsed.data;
 
+    // This can throw but only with friendly error messages.
     await logMessageToTelegram(parsedData);
 
     return {
