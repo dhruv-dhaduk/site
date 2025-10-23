@@ -1,0 +1,1 @@
+export { logErrorToTelegram } from './logTelegram';

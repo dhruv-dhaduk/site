@@ -1,12 +1,12 @@
 import { ErrorScreen } from '@/components/ErrorScreen';
-import { tryCatch } from '@/utils/tryCatch';
+import { tryCatchNoLog } from '@/utils/errors/tryCatchNoLog';
 
 import { fetchBlogsList } from '$/blog/services/github.service';
 
 import { BlogCard } from './BlogCard';
 
 export async function BlogList() {
-    const [blogsList, error] = await tryCatch(fetchBlogsList());
+    const [blogsList, error] = await tryCatchNoLog(fetchBlogsList());
 
     if (error) {
         let errorMessage: string | undefined;

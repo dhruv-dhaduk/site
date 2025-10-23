@@ -3,7 +3,8 @@ import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 
 import { env } from '@/env';
-import { tryCatch } from '@/utils/tryCatch';
+import { tryCatch } from '@/utils/errors/tryCatch';
+import { safeParse } from '@/utils/errors/safeParse';
 import { CACHE_TAGS } from '@/constants/cacheTags';
 
 import { BlogListSchema, type Blog } from '$/blog/schemas/blog.schema';
@@ -32,14 +33,12 @@ export async function fetchBlogsList(): Promise<Array<Blog>> {
     );
 
     if (fetch_error) {
-        console.error('Error fetching blogs list:', fetch_error);
         throw new Error(`HTTP error`);
     }
 
-    const blogsList = BlogListSchema.safeParse(response.data);
+    const blogsList = await safeParse(BlogListSchema, response.data);
 
     if (!blogsList.success) {
-        console.error('Error validating blogs list data:', blogsList.error);
         throw new Error('Blogs list data validation failed');
     }
 

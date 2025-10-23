@@ -1,12 +1,12 @@
 import { ErrorScreen } from '@/components/ErrorScreen';
-import { tryCatch } from '@/utils/tryCatch';
+import { tryCatchNoLog } from '@/utils/errors/tryCatchNoLog';
 
 import { fetchProjects } from '$/projects/services/github.service';
 
 import { ProjectCard } from './ProjectCard';
 
 export async function ProjectList() {
-    const [projects, error] = await tryCatch(fetchProjects());
+    const [projects, error] = await tryCatchNoLog(fetchProjects());
 
     if (error) {
         let errorMessage: string | undefined;

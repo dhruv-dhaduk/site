@@ -14,7 +14,7 @@ import { type ContactFormData } from '$/contact/schemas/contact.schema';
 export async function logMessageToTelegram(
     data: ContactFormData
 ): Promise<void> {
-    const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const url = `https://api.telegram.org/bot${env.TELEGRAM_CONTACT_BOT_TOKEN}/sendMessage`;
     const text = formatFormDataForTelegram(data);
 
     const response = await axios.post(url, {

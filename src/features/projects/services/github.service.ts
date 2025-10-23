@@ -3,7 +3,8 @@ import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 
 import { env } from '@/env';
-import { tryCatch } from '@/utils/tryCatch';
+import { tryCatch } from '@/utils/errors/tryCatch';
+import { safeParse } from '@/utils/errors/safeParse';
 import { CACHE_TAGS } from '@/constants/cacheTags';
 
 import {
@@ -35,14 +36,12 @@ export async function fetchProjects(): Promise<Array<Project>> {
     );
 
     if (fetch_error) {
-        console.error('Error fetching projects:', fetch_error);
         throw new Error(`HTTP error!`);
     }
 
-    const projects = ProjectListSchema.safeParse(response.data);
+    const projects = await safeParse(ProjectListSchema, response.data);
 
     if (!projects.success) {
-        console.error('Error validating projects data:', projects.error);
         throw new Error('Projects data validation failed');
     }
 
