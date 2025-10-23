@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 
-import { Header } from '@/components/Header';
-
 export const metadata: Metadata = {
     title: 'Contact | Dhruv Dhaduk',
 };
@@ -9,10 +7,5 @@ export const metadata: Metadata = {
 export default function ContactLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
-    return (
-        <div className="mx-auto w-full max-w-[80rem]">
-            <Header activePage="contact" />
-            {children}
-        </div>
-    );
+    return <div className="mx-auto w-full max-w-[80rem]">{children}</div>;
 }

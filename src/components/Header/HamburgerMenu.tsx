@@ -9,14 +9,11 @@ import {
 } from '@/components/ui/popover';
 import { HamburgerIcon, CloseIcon } from '@/assets/icons';
 
-import { NavLink } from './NavLink';
-import type { ActivePage } from './types';
-
 interface HamburgerMenuProps {
-    activePage: ActivePage;
+    children: React.ReactNode;
 }
 
-export function HamburgerMenu({ activePage }: HamburgerMenuProps) {
+export function HamburgerMenu({ children }: HamburgerMenuProps) {
     const [open, setOpen] = useState(false);
 
     return (
@@ -34,22 +31,11 @@ export function HamburgerMenu({ activePage }: HamburgerMenuProps) {
                 </button>
             </PopoverTrigger>
             <PopoverContent className="bg-site-bg mt-2 mr-2 w-fit min-w-36 sm:hidden">
-                <div className="flex flex-col gap-2">
-                    <NavLink
-                        href="/projects"
-                        label="Projects"
-                        isActive={activePage === 'projects'}
-                    />
-                    <NavLink
-                        href="/blog"
-                        label="Blog"
-                        isActive={activePage === 'blog'}
-                    />
-                    <NavLink
-                        href="/contact"
-                        label="Contact Me"
-                        isActive={activePage === 'contact'}
-                    />
+                <div
+                    className="flex flex-col gap-2"
+                    onClick={() => setOpen(false)}
+                >
+                    {children}
                 </div>
             </PopoverContent>
         </Popover>

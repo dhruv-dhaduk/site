@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 
-import { Header } from '@/components/Header';
-
 export const metadata: Metadata = {
     title: 'Blog | Dhruv Dhaduk',
     description:
@@ -11,10 +9,5 @@ export const metadata: Metadata = {
 export default function BlogLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
-    return (
-        <div className="mx-auto w-full max-w-[80rem]">
-            <Header activePage="blog" />
-            {children}
-        </div>
-    );
+    return <div className="mx-auto w-full max-w-[80rem]">{children}</div>;
 }

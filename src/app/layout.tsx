@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { JetBrains_Mono, IBM_Plex_Mono, Inter } from 'next/font/google';
 
 import '@/env';
+import { Header } from '@/components/Header';
 import { Toaster } from '@/components/ui/sonner';
 
 import './globals.css';
@@ -98,6 +99,7 @@ export default function RootLayout({
             <body
                 className={`${jetBrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
             >
+                <Header />
                 {children}
                 <Toaster theme="dark" richColors />
             </body>
