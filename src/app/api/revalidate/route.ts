@@ -1,10 +1,13 @@
-import crypto from 'crypto';
-
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidateTag } from 'next/cache';
 
-import { env } from '@/env';
-import { CACHE_TAGS } from '@/constants/cacheTags';
+import {
+    findTagsToRevalidate,
+    isAuthorizedGithubWebhook,
+} from '@/cache/githubWebhook';
+import { tryCatchNoLog } from '@/utils/errors/tryCatchNoLog';
+import { tryCatch } from '@/utils/errors/tryCatch';
+import { logInfoToTelegram } from '@/log/logTelegram';
 
 // This route handles GitHub webhook events to revalidate the pages.
 export async function POST(req: NextRequest) {
@@ -20,40 +23,46 @@ export async function POST(req: NextRequest) {
     }
 
     // Read the raw body of the request to compute the HMAC
-    const rawBody = await req.text();
-    console.log('Raw body received for revalidation:', rawBody);
+    const [rawBody, read_error] = await tryCatch(req.text());
+    if (read_error) {
+        return NextResponse.json(
+            { error: 'Error reading request body' },
+            { status: 400 }
+        );
+    }
 
-    // Compute the HMAC using the secret and the raw body
-    const hmac = crypto.createHmac('sha256', env.GITHUB_WEBHOOK_SECRET);
-    const digest = 'sha256=' + hmac.update(rawBody).digest('hex');
-
-    // Compare the computed HMAC with the signature from the header
-    const isValid = crypto.timingSafeEqual(
-        Buffer.from(signature),
-        Buffer.from(digest)
-    );
+    const isAuthorized = isAuthorizedGithubWebhook(signature, rawBody);
 
     // If the signature is not valid, return an error response
-    if (!isValid) {
+    if (!isAuthorized) {
         return NextResponse.json(
             { error: 'Invalid signature' },
             { status: 401 }
         );
     }
 
-    // If the signature is valid, proceed to revalidate the path
-    try {
-        revalidateTag(CACHE_TAGS.PROJECTS, 'max');
-        revalidateTag(CACHE_TAGS.BLOG.LIST, 'max');
+    const [tagsToRevalidate, parse_error] = await tryCatchNoLog(
+        findTagsToRevalidate(rawBody)
+    );
 
+    if (parse_error) {
         return NextResponse.json(
-            { message: 'Revalidation successful', revalidated: true },
-            { status: 200 }
-        );
-    } catch (error) {
-        return NextResponse.json(
-            { message: 'Error revalidating', error },
-            { status: 500 }
+            { error: parse_error.message || 'Error parsing webhook payload' },
+            { status: 400 }
         );
     }
+
+    for (const tag of tagsToRevalidate) {
+        revalidateTag(tag, 'max');
+    }
+
+    await logInfoToTelegram(
+        'GitHub Webhook Revalidation',
+        `🔄 Revalidated tags: \n${tagsToRevalidate.join('\n')}`
+    );
+
+    return NextResponse.json(
+        { message: 'Revalidation successful', revalidated: true },
+        { status: 200 }
+    );
 }

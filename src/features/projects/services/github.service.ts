@@ -5,7 +5,7 @@ import { cacheLife, cacheTag } from 'next/cache';
 import { env } from '@/env';
 import { tryCatch } from '@/utils/errors/tryCatch';
 import { safeParse } from '@/utils/errors/safeParse';
-import { CACHE_TAGS } from '@/constants/cacheTags';
+import { CACHE_TAGS } from '@/cache/cacheTags';
 
 import {
     ProjectListSchema,

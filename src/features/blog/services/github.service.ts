@@ -5,7 +5,7 @@ import { cacheLife, cacheTag } from 'next/cache';
 import { env } from '@/env';
 import { tryCatch } from '@/utils/errors/tryCatch';
 import { safeParse } from '@/utils/errors/safeParse';
-import { CACHE_TAGS } from '@/constants/cacheTags';
+import { CACHE_TAGS } from '@/cache/cacheTags';
 
 import { BlogListSchema, type Blog } from '$/blog/schemas/blog.schema';
 
@@ -20,7 +20,7 @@ const BLOGS_LIST_URL = `${env.GITHUB_VAULT_URL}/contents/blog/index.json`;
 export async function fetchBlogsList(): Promise<Array<Blog>> {
     'use cache';
     cacheLife('max');
-    cacheTag(CACHE_TAGS.BLOG.LIST);
+    cacheTag(CACHE_TAGS.BLOG_LIST);
 
     console.log('Fetching blogs list from GitHub...');
     const [response, fetch_error] = await tryCatch(
