@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import type { Route } from 'next';
 import { UserRoundSearch } from 'lucide-react';
 
+import { Link } from '@/components/Link';
 import {
     LocationIcon,
     ProjectsIcon,

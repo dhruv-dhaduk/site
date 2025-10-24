@@ -38,6 +38,14 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
                     {
                         group: ['../*'],
                         message: 'Use `@` import alias instead of relative imports.'
+                    },
+                    {
+                        group: ['next/link'],
+                        message: 'Use the `Link` component from `@/components/Link/Link.tsx` instead of `next/link` directly.'
+                    },
+                    {
+                        group: ['next/image'],
+                        message: 'Use the `Image` component from `@/features/image/` instead of `next/image` directly.'
                     }
                 ]
             }

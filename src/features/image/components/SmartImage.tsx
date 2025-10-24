@@ -1,5 +1,6 @@
 'use client';
 
+// eslint-disable-next-line no-restricted-imports
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

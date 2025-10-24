@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import type { Route } from 'next';
+
+import { Link } from '@/components/Link';
 
 import type { Blog } from '$/blog/schemas/blog.schema';
 
