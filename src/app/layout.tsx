@@ -99,10 +99,8 @@ export default function RootLayout({
             <body
                 className={`${jetBrainsMono.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
             >
-                <div className="mx-auto w-full max-w-[80rem]">
-                    <Header />
-                    {children}
-                </div>
+                <Header />
+                {children}
                 <Toaster theme="dark" richColors />
             </body>
         </html>

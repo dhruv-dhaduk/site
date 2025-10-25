@@ -22,7 +22,7 @@ export function Header() {
     ));
 
     return (
-        <header className="font-jetbrains bg-site-bg/30 glassmorphic border-site-border-darker sticky top-0 z-10 flex h-12 w-full items-center justify-between border-b px-4 sm:h-14">
+        <header className="font-jetbrains bg-site-bg/30 glassmorphic border-site-border-darker sticky top-0 z-10 mx-auto flex h-12 w-full max-w-7xl items-center justify-between border-b px-4 sm:h-14">
             <div className="sm:text-lg">
                 <Link href="/" className="hover:text-white" prefetch="auto">
                     ~/dhruv ❯{' '}
