@@ -13,6 +13,7 @@ export function NavLink({ href, label, isActive }: NavLinkProps) {
         <Link
             href={href}
             className={`font-plex relative flex items-center gap-2 hover:text-white ${isActive ? 'text-white' : 'pl-4'}`}
+            prefetch="auto"
         >
             {isActive && (
                 <span className="relative flex h-2 w-2">

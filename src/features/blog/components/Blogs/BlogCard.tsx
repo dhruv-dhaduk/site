@@ -15,6 +15,7 @@ export function BlogCard({ blog }: BlogCardProps) {
         <Link
             href={`/blog/${blog.slug}` as Route}
             className="text-site-fg-2 hover:text-site-fg-1 group flex flex-col gap-1.5"
+            prefetch="auto"
         >
             <p className="font-inter text-2xl font-bold sm:text-3xl">
                 {blog.title}

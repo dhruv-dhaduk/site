@@ -103,6 +103,7 @@ function NavLink({ icon, href, label }: NavLinkProps) {
         <Link
             href={href}
             className="text-site-fg bg-site-bg-1 hover:bg-site-bg-3 border-site-border-1 flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm transition sm:rounded-xl sm:px-5 sm:py-3 sm:text-base"
+            prefetch="auto"
         >
             {icon}
             <span>{label}</span>

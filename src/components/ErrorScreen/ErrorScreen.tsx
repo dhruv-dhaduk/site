@@ -25,6 +25,7 @@ export function ErrorScreen({ message }: ErrorScreenProps) {
                 <Link
                     href="/"
                     className="font-jetbrains rounded border border-white px-4 py-2 text-sm font-medium text-white transition hover:bg-white hover:text-black"
+                    prefetch="auto"
                 >
                     cd $HOME
                 </Link>
