@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 export default function BlogLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
-    return <div className="mx-auto w-full max-w-[80rem]">{children}</div>;
+    return children;
 }
