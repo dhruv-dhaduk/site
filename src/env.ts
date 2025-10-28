@@ -5,6 +5,7 @@ import { z } from 'zod';
 export const env = createEnv({
     server: {
         ENVIRONMENT: z.enum(['development', 'production']),
+        ADMIN_SECRET: z.string().min(1),
         GITHUB_TOKEN: z.string().min(1),
         GITHUB_VAULT_URL: z.string().url(),
         GITHUB_WEBHOOK_SECRET: z.string().min(1),
@@ -14,6 +15,7 @@ export const env = createEnv({
     },
     runtimeEnv: {
         ENVIRONMENT: process.env.ENVIRONMENT,
+        ADMIN_SECRET: process.env.ADMIN_SECRET,
         GITHUB_TOKEN: process.env.GITHUB_TOKEN,
         GITHUB_VAULT_URL: process.env.GITHUB_VAULT_URL,
         GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,
