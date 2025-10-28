@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
     /* config options here */
     typedRoutes: true,
     cacheComponents: true,
+    turbopack: {
+        rules: {
+            '*.mdx': {
+                loaders: ['raw-loader'],
+                as: '*.js',
+            },
+        },
+    },
     images: {
         remotePatterns: [
             {
