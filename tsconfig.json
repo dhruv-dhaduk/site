@@ -23,7 +23,11 @@
             "$/*": ["./src/features/*"]
         }
     },
+    "mdx": {
+        "checkMdx": true
+    },
     "include": [
+        "./src/app/blog/preview/preview.mdx",
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",

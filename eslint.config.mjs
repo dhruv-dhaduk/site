@@ -24,6 +24,13 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
                 message: 'Use `env` from `@/env` instead of `process.env`.'
             }
         ],
+        'no-restricted-syntax': [
+            'error',
+            {
+                selector: "JSXOpeningElement[name.name=/^mdx_/]",
+                message: "Usage of mdx components is not allowed."
+            }
+        ],
         'import/no-unresolved': ['error', {
             ignore: ['server-only', 'client-only']
         }],

@@ -1,7 +1,7 @@
-import { mdx_Button } from './mdx_Button';
+import { Btn } from './Btn';
 
 export const MDXComponents = {
-    mdx_Button,
+    mdx_Btn: Btn,
 } as const;
 
 export type MDXComponentsMap = typeof MDXComponents;
