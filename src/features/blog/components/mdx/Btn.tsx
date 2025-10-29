@@ -1,7 +1,7 @@
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 import { Button } from '@/components/ui/button';
 
-export function Btn(props: ComponentProps<typeof Button>) {
+export async function Btn(props: ComponentProps<typeof Button>) {
     return <Button {...props} />;
 }
