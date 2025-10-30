@@ -17,3 +17,12 @@ export const BlogSchema = z.object({
 export const BlogListSchema = z.array(BlogSchema);
 
 export type Blog = z.infer<typeof BlogSchema>;
+
+export const BlogPostSchema = z.object({
+    title: BlogSchema.shape.title,
+    summary: BlogSchema.shape.summary,
+    date: BlogSchema.shape.date,
+    tags: BlogSchema.shape.tags,
+});
+
+export type BlogPostMetadata = z.infer<typeof BlogPostSchema>;

@@ -1,28 +1,55 @@
-import { MDXRemote, type MDXComponents } from 'next-mdx-remote-client/rsc';
+import { MDXRemote } from 'next-mdx-remote-client/rsc';
+import matter from 'gray-matter';
 
-import { MDXProvidedComponents } from '$/blog/components/mdx';
+import { Link } from '@/components/Link';
+import { safeParse } from '@/utils/errors/safeParse';
+
+import { BlogPostSchema } from '$/blog/schemas/blog.schema';
+import { components } from '$/blog/components/mdx';
+
+import { ErrorComponent } from './ErrorComponent';
 
 interface BlogPostProps {
     source: string;
 }
 
-const components: MDXComponents = {
-    ...MDXProvidedComponents,
-    wrapper: ({ children }: { children: React.ReactNode }) => (
-        <div className="bg-gray">{children}</div>
-    ),
-    h1: (props) => <h1 className="my-4 text-3xl font-bold" {...props} />,
-    pre: (props) => (
-        <pre className="my-4 rounded-lg bg-black p-4 text-white" {...props} />
-    ),
-};
+export async function BlogPost({ source }: BlogPostProps) {
+    const { data, content } = matter(source);
 
-export function BlogPost({ source }: BlogPostProps) {
+    const { data: metadata } = await safeParse(BlogPostSchema, data);
+
+    if (!metadata) {
+        return <ErrorComponent message="Failed to load blog post metadata." />;
+    }
+
     return (
-        <div>
-            <p>Blog Preview</p>
-            <pre>{source}</pre>
-            <MDXRemote source={source} components={components} options={{}} />
-        </div>
+        <main className="font-inter mx-auto flex w-full max-w-200 flex-col gap-12 px-4 pt-6 pb-10 sm:px-6 sm:pb-16">
+            <div className="flex flex-col gap-3">
+                <Link
+                    href="/blog"
+                    prefetch="auto"
+                    className="text-site-fg-6 hover:text-site-fg-1 mb-3 w-fit"
+                >
+                    &larr; Back
+                </Link>
+                <h1 className="flex items-end gap-4 overflow-visible text-4xl font-bold sm:text-[44px]">
+                    <span>{metadata.title}</span>
+                </h1>
+                <p className="text-site-fg-3 text-sm">
+                    Posted on{' '}
+                    {new Date(metadata.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })}
+                </p>
+            </div>
+            <MDXRemote
+                onError={ErrorComponent}
+                source={content}
+                components={components}
+                options={{}}
+            />
+        </main>
     );
 }

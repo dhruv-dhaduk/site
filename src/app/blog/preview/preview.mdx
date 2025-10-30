@@ -1,11 +1,22 @@
+---
+title: "Types Over The Wire"
+summary: "Achieve end to end type safety between frontend and backend."
+date: "2025-10-27"
+tags: ["TypeScript", "API", "Frontend", "Backend"]
+---
+
 {/**
- * @import { MDXProvidedComponents } from '$/blog/components/mdx'
+ * @import { MDXProvidedComponents } from '@/features/blog'
 */}
 
-# Hello, World
+How do you ensure type safety between your frontend and backend? In this post, we'll explore strategies to achieve end-to-end type safety using TypeScript.
+
+First and foremost, define your types in a shared location. This could be a separate package or a shared directory that both your frontend and backend can access.
+
+So that both sides can use the same definitions, reducing the risk of mismatched types.
 
 ```typescript
-const greeting: string = "Hello, World!";
+const a: number = 42;
 ```
 
-<MDX_Btn variant='destructive'>Click Me!</MDX_Btn>
+<MDX_Btn variant='outline'>Click Me!</MDX_Btn>
