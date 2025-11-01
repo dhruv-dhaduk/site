@@ -27,6 +27,8 @@ export async function BlogPost({ source }: BlogPostProps) {
         return <ErrorComponent message="Failed to load blog post metadata." />;
     }
 
+    console.log('BlogPost component for: ', metadata.title);
+
     return (
         <main className="font-inter mx-auto flex w-full max-w-200 flex-col gap-12 px-4 pt-6 pb-10 sm:px-6 sm:pb-16">
             <div className="flex flex-col gap-3">
