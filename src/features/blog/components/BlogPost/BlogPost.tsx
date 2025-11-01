@@ -15,6 +15,8 @@ interface BlogPostProps {
 }
 
 export async function BlogPost({ source }: BlogPostProps) {
+    'use cache';
+
     const { data, content } = matter(source);
 
     const { data: metadata } = await safeParse(BlogPostSchema, data);
