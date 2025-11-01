@@ -1,5 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote-client/rsc';
 import matter from 'gray-matter';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 import { Link } from '@/components/Link';
 import { safeParse } from '@/utils/errors/safeParse';
@@ -48,7 +49,19 @@ export async function BlogPost({ source }: BlogPostProps) {
                 onError={ErrorComponent}
                 source={content}
                 components={components}
-                options={{}}
+                options={{
+                    mdxOptions: {
+                        rehypePlugins: [
+                            [
+                                rehypePrettyCode,
+                                {
+                                    theme: 'github-dark',
+                                    keepBackground: false,
+                                },
+                            ],
+                        ],
+                    },
+                }}
             />
         </main>
     );

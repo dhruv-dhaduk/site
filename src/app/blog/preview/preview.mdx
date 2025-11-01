@@ -17,6 +17,14 @@ So that both sides can use the same definitions, reducing the risk of mismatched
 
 ```typescript
 const a: number = 42;
+const b: string = "Hello, World!";
+
+function greet(name: string): string {
+    return `Hello, ${name}!`;
+}
+
+console.log(a);
+console.log(greet(b));
 ```
 
 <MDX_Btn variant='outline'>Click Me!</MDX_Btn>
