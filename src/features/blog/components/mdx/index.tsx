@@ -99,7 +99,7 @@ export const components: MDXComponents = {
         // Inline code styling
         return (
             <code
-                className="text-site-fg-1 rounded bg-black/90 px-1.5 py-0.5 font-mono text-sm"
+                className="text-site-fg-1 w-fit rounded bg-black/90 px-1.5 py-0.5 font-mono text-sm"
                 {...props}
             >
                 {children}
