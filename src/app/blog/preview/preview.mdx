@@ -9,22 +9,210 @@ tags: ["TypeScript", "API", "Frontend", "Backend"]
  * @import { MDXProvidedComponents } from '@/features/blog'
 */}
 
-How do you ensure type safety between your frontend and backend? In this post, we'll explore strategies to achieve end-to-end type safety using TypeScript.
+What do you think is wrong with this piece of code ?
 
-First and foremost, define your types in a shared location. This could be a separate package or a shared directory that both your frontend and backend can access.
-
-So that both sides can use the same definitions, reducing the risk of mismatched types.
-
-```typescript
-const a: number = 42;
-const b: string = "Hello, World!";
-
-function greet(name: string): string {
-    return `Hello, ${name}!`;
+```javascript
+async function fetchUser(userId) {
+    const response = await fetch(`/api/users/${userId}`);
+    if (!response.ok)
+        throw new Error('Something went wrong.');
+    const user = await response.json();
+    return user;
 }
-
-console.log(a);
-console.log(greet(b));
 ```
 
-<MDX_Btn variant='outline'>Click Me!</MDX_Btn>
+Well, the first problem is that it is JavaScript. So we should probably start by converting it into typescript. So let's try that.
+
+```typescript
+interface User {
+    id: string;
+    name: string;
+    age: number;
+    isAdmin: boolean;
+}
+
+async function fetchUser(userId: string): Promise<User> {
+    const response = await fetch(`/api/users/${userId}`);
+    if (!response.ok)
+        throw new Error('Something went wrong.');
+    const user = await response.json();
+    return user;
+}
+```
+
+Now doing this improves our code a lot. 
+
+- We have now essentially “documented” what a User is and what it contains. Which can give us very nice auto-completes from LSP, btw.
+- We have given some interface to our “fetchUser” function, so it prevents passing any random thing into that.
+
+But there are still some problems. 
+
+The first problem is that the “user” variable’s type is “any”. We haven't specified anywhere in our code that type. It is coming implicitly from “somewhere”. But we specified the return type. And by how “any” works in typescript, it will pass through any kind of type-checking that we have in our code. So we are just cheating with the code that will call our function. Our fetchUser function is saying that it will return a promise that will resolve in an object with the shape specified in “User” interface, but anything can happen at runtime.
+This is the problem that we will try to solve here in this article.
+
+The second problem is that there are many places where our function might break. Apart from that last return statement, each line in our function can throw error. We cannot just “fix” these errors. There is always some probability that these kinds of error will happen.
+But typescript’s type system does not define these kinds of things. It is not something that are part of the static type system of typescript. So the code that calls our function has no idea if it can throw or with what kinds of errors. 
+But this problem demands a seperate discussion of its own and is not part of our current discussion. There are already some great [youtube videos](https://youtu.be/Y6jT-IkV0VM?si=N7DmpK1kxOvYuxSC) discussing this problem.
+
+---
+
+### Now what can go wrong with our current code ?
+
+We currently have one isAdmin field in our User type. So because our function returns this type, some other code in our codebase, maybe very deep down the component hierarchy might be having some conditions like this : 
+
+```typescript
+if (user.isAdmin) {
+    // Do something
+}
+```
+
+This is just one example. But in massive codebase the amount of code and number of fields in an object and kinds of objects can be massive.
+
+Now let's say the backend guys made some changes and are now returning a “role” field instead. Which can be like “admin”, “manager”, “guest”. So what happens to our existing code. Does it give any error ? No. But does it work as expected ? No. 
+
+What happens is that our above condition will always be false, because we now have a new field, so user.isAdmin in undefined.
+
+This is just one example of a bug that is harder to catch until we realize that the UI for admin is not behaving like it should. 
+
+Of course, we must have clear communication between frontend and backend teams. But let's says we update our code like this :
+
+```typescript
+if (user.role === "admin") {
+    // Do something
+}
+```
+
+And the backend guys maybe capitalize the value or make any other trivial changes that may not be as critical to communicate as a change in the field. In short, this can happen and I have seen it happening in production projects.
+
+So errors and bugs just silently diffuses throughout our codebase, because we don't have a good gatekeeping for that.
+
+### So what is the core of this problem ?
+
+The main problem is that we are redefining the “types” for our “objects” on both backend and frontend and both can go out of sync. 
+
+Assuming that the backend is written in a language that have types, the types for the objects that our APIs returns may already be defined in the backend code, whatever be the programming language used there.
+
+Redefining the same on the frontend side can be redundant because the types already exists at its natural place. (i.e. backend)
+
+Both frontend and backend are seperated by time and space and communicate with each other over the wire. How do we get these types that are defined in the backend to our frontend ? (Or should we ?)
+
+---
+
+### Runtime validation
+
+We don't necessarily have to get the types from the backend. We can redefine them in our frontend.
+
+We know that the type of a network response will always be “any” because this is how fetch works. And it also makes sense. Because all the type checking that typescript does happens statically. So we have no way to know statically what an API may return because an API is a black box that our frontend code doesn't have access to. 
+
+And as we know that typescript just melts away after build, we just have javascript left at runtime. 
+
+So we can go one step further and do some runtime checks to verify that the object that an API returns is of the shape that we expect. 
+
+How can we do that ? This is a primitive way to do that :
+
+```typescript
+interface User {
+    id: string;
+    name: string;
+    age: number;
+    isAdmin: boolean;
+}
+
+function isUser(obj: any): obj is User {
+    return (
+        obj &&
+        typeof obj === 'object' &&
+        typeof obj.id === 'string' &&
+        typeof obj.name === 'string' &&
+        typeof obj.age === 'number' &&
+        typeof obj.isAdmin === 'boolean'
+    );
+}
+
+async function fetchUser(userId: string): Promise<User> {
+    const response = await fetch(`/api/users/${userId}`);
+    if (!response.ok)
+        throw new Error('Something went wrong.');
+    const user = await response.json();
+    
+    if (!isUser(user)) {
+        throw new Error('Invalid user object returned from API');
+    }
+    
+    return user;
+}
+```
+
+Now even after TypeScript melts away at build time and finally our JavaScript runs, we are doing some checking to make sure the shape is correct. 
+
+Yeah I know that there are libraries like Zod and Yup that does the same kind of runtime checks and does is way better than our humble isUser function. But the point is about doing some runtime checks.
+
+By doing this, our program will obviously crash when the API returns wrong shape. But this mismatch of shape is easily caught before the user object is returned from our function. We are now preventing this error to diffuse around our codebase. We are now not lying to the code that calls our fetchUser function. Now at runtime it will always return the object of the shape that it specified to other parts of our code using compile time tools like Typescript. 
+
+Now if our frontend just crashes, we can just easily take a look at the error and confidentiality say that this is a backend issue. There are not some silent bugs lurking around in codebase which are hard to trace.
+
+This way of ensuring type safety in API calls is mostly used when the the the API is some third party service than our product.
+
+### Frontend-Backend colocation
+
+![tRPC](https://raw.githubusercontent.com/dhruv-d-simform/react-fullstack-template/refs/heads/main/trpc-demo.gif)
+
+What if our backend is also written in TypeScript ?
+
+As I previously mentioned, both frontend and backend are seperated by time and space and communicate with each other over the wire. But this is true about running the code after it has been deployed. This seperation is the runtime seperation. But our actual code doesn't need to be seperated. We can have some backend code and some frontend code literally in a same file, as long as our build process can yank them out in different frontend and backend bundles for deployment. But we don't have to go that far. 
+
+We can have frontend and backend in same codebase. We don't have to mix both frontend and backend code. We can clearly seperate them. But what we can do is have some kind of shared location where we define our types centrally. Both frontend and backend code can use these types. So if anything changes, it is reflected on both backend and frontend code. And we can have simpler build system.
+
+We already have tools like tRPC to make this easier. I already have a [template](https://github.com/dhruv-d-simform/react-fullstack-template) for that on github. 
+
+Here frontend and backend can live in their own seperate world after build and deployment. But before deployment, they are colocated in a single codebase, they can be type-checked together. This is possible because type checking is holistic operation.
+
+### Generating the Types
+
+Sadly, we cannot always have our backend written in TypeScript. And even if we do, we cannot always colocation both in a single codebase.
+
+Our backend can be written in different programming language. And defining types in different programming languages is different and some languages don't even have types. And assuming that our backend language do have types, we cannot just serialize the types and send them over the wire (yes, I lied in the title of this article). 
+
+But there are some way to generate some general machine readable schema from the backend code and types defined there. We have a format for that : OpenAPI Specification. 
+
+Most non-trivial projects’ backend teams maintains one. One of the use cases is to document the APIs. But that doc is not machine readable and we cannot generate types from that. 
+
+But we can also have the entire spec in a json or yaml format. And we can easily generate types from it and [make our APIs type safe](https://youtube.com/shorts/vUz196v6eNY?si=SP7KFwCc9UprMcf1). 
+
+Here is how we can do that. Let's grab one publically available openapi spec : https://petstore3.swagger.io/
+
+There is some documentation of the APIs in there. But there is also one json link provided : https://petstore3.swagger.io/api/v3/openapi.json
+
+Now you can just take this json link and use “openapi-typescript” library to generate the types. You can just run this command to do so :
+
+```bash
+npx openapi-typescript -o api.types.ts https://petstore3.swagger.io/api/v3/openapi.json 
+```
+
+This will generate the types and put it in “api.types.ts” as we specified.
+
+Now if you take a look at the generated types, it can be a bit hard to understand and use. To simplify that, we can you “openapi-fetch”.
+
+```typescript
+import createClient from 'openapi-fetch';
+import type { paths } from './api.types';
+
+const api = createClient<paths>();
+
+api.GET('');
+     // ^ try typing the path and see the autocomplete magic
+```
+
+With this we get a completely typesafe api client which makes our API requests all completely typesafe. 
+
+Yes there are still some problems like what if the schema changes and we have not re-generated the types. Well this problem can be solved if it is not some third party api. In case of third party APIs, we do not know when they will make changes to schema and push it. 
+
+But if it is not some third party APIs, we can always work around this problem by hooking up this types genration with build pipelines of backend and frontend. Well I haven't done that but we can setup a webhook on backend deployment which can trigger regeneration of types from new schema and type-check our frontend.
+
+---
+
+### Are there other ways ?
+
+In this article, I only focused on REST APIs, because they are widely used. We have very good alternatives like GraphQL which can solve this problem out of the box. Also tools like tRPC and server components/server actions can also ensure end-to-end typesafety.
+
+Well completely rewriting the apps to use these modern tools may not be viable option. But just demanding a clear openapi schema from backend team and using it to generate types can make our apps significantly more robust.
