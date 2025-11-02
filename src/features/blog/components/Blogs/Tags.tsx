@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface TagsProps {
     tags: Array<string>;
@@ -27,6 +27,10 @@ export function Tags({ tags }: TagsProps) {
             });
         }
     };
+
+    useEffect(() => {
+        handleScroll();
+    }, []);
 
     return (
         <div
