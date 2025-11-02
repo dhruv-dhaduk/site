@@ -4,15 +4,14 @@ import { Metadata } from 'next';
 import { CACHE_TAGS } from '@/cache/cacheTags';
 import { tryCatchNoLog } from '@/utils/errors/tryCatchNoLog';
 import { NotFound } from '@/components/NotFound';
-import { BlogPost, fetchBlogPost, fetchBlogsList } from '@/features/blog';
+import { BlogPost, fetchBlogPost } from '@/features/blog';
+import { blogs } from '@/data/blogs';
 
 // We need at least one default slug to avoid build errors
 const PLACEHOLDER_SLUG = '__placeholder__';
 
-export async function generateStaticParams() {
-    const blogPosts = await fetchBlogsList();
-
-    const params = blogPosts.map((post) => ({ slug: post.slug }));
+export function generateStaticParams() {
+    const params = blogs.map((post) => ({ slug: post.slug }));
 
     if (params.length === 0) {
         return [{ slug: PLACEHOLDER_SLUG }];
@@ -25,41 +24,34 @@ type Props = {
     params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({
-    params,
-}: Props): Promise<Metadata> {
-    "use cache";
-    cacheLife('max');
-
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
 
-    cacheTag(CACHE_TAGS.BLOG_POST(slug));
+    const blogPost = blogs.find((post) => post.slug === slug);
 
-    console.log('Generating metadata for blog post with slug:', slug);
-
-    if (slug === PLACEHOLDER_SLUG) {
+    if (blogPost) {
         return {
-            title: 'Blog Post Not Found',
+            title: blogPost.title,
+            description: blogPost.summary,
+            openGraph: {
+                title: blogPost.title,
+                description: blogPost.summary,
+                url: `https://dhruvdhaduk.tech/blog/${blogPost.slug}`,
+                type: 'article',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: blogPost.title,
+                description: blogPost.summary,
+                creator: '@dhruvdhaduk0',
+            },
         };
     }
 
-    const [data, error] = await tryCatchNoLog(fetchBlogPost(slug));
-
-    if (error) {
-        return {};
-    }
-
-    const { metadata } = data;
-
-    return {
-        title: metadata.title,
-        description: metadata.summary,
-    }
+    return {};
 }
 
-export default async function BlogPostPage({
-    params,
-}: Props) {
+export default async function BlogPostPage({ params }: Props) {
     'use cache';
     cacheLife('max');
 

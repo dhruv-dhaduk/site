@@ -80,13 +80,6 @@ export const metadata: Metadata = {
         email: false,
         address: false,
     },
-    alternates: {
-        canonical: 'https://dhruvdhaduk.tech',
-        languages: {
-            'en-US': '/en',
-        },
-    },
-    metadataBase: new URL('https://dhruvdhaduk.tech'),
 };
 
 export default function RootLayout({
