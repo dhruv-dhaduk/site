@@ -14,7 +14,7 @@ import {
 export default function Home() {
     return (
         <main className="font-plex bg-site-bg flex min-h-dvh items-center justify-center px-6 py-16">
-            <div className="mx-auto flex max-w-3xl flex-col gap-12">
+            <div className="mx-auto flex max-w-3xl flex-col gap-8">
                 {/* Intro */}
                 <div className="flex flex-col gap-2">
                     <p className="text-site-fg-6 text-sm">{`Hi I'm`}</p>
@@ -30,11 +30,8 @@ export default function Home() {
 
                 {/* Description */}
                 <p className="text-site-fg-5 leading-relaxed sm:text-lg">
-                    I explore systems from inside out — from x64 to TypeScript,
-                    from memory to markup.
-                    <br />
-                    This site is where I document what I learn, build, and
-                    think.
+                    Exploring the world of software by building, learning and
+                    sharing my experiences through writing.
                 </p>
 
                 {/* Internal Site Links */}

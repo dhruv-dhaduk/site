@@ -1,13 +1,16 @@
 import 'server-only';
 import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
+import { cache } from 'react';
+import matter from 'gray-matter';
 
 import { env } from '@/env';
 import { tryCatch } from '@/utils/errors/tryCatch';
+import { tryCatchNoLog } from '@/utils/errors/tryCatchNoLog';
 import { safeParse } from '@/utils/errors/safeParse';
 import { CACHE_TAGS } from '@/cache/cacheTags';
 
-import { BlogListSchema, type Blog } from '$/blog/schemas/blog.schema';
+import { BlogListSchema, type Blog, BlogPostSchema, type BlogPostMetadata } from '$/blog/schemas/blog.schema';
 
 const BLOGS_LIST_URL = `${env.GITHUB_VAULT_URL}/contents/blog/index.json`;
 
@@ -51,10 +54,14 @@ export async function fetchBlogsList(): Promise<Array<Blog>> {
  * @param slug The slug of the blog post.
  * @returns The content of the blog post.
  */
-export async function fetchBlogPost(slug: string): Promise<string> {
+export const fetchBlogPost = cache(async (slug: string): Promise<{
+    content: string;
+    metadata: BlogPostMetadata
+}> => {
+    console.log(`Fetching blog post "${slug}" from GitHub...`);
     const BLOG_POST_URL = `${env.GITHUB_VAULT_URL}/contents/blog/posts/${slug}.mdx`;
 
-    const [response, fetch_error] = await tryCatch(
+    const [response, fetch_error] = await tryCatchNoLog(
         axios.get(BLOG_POST_URL, {
             headers: {
                 Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -67,5 +74,16 @@ export async function fetchBlogPost(slug: string): Promise<string> {
         throw new Error(`HTTP error`);
     }
 
-    return response.data;
-}
+    const { data, content } = matter(response.data);
+
+    const {data: metadata} = await safeParse(BlogPostSchema, data);
+
+    if (!metadata) {
+        throw new Error("Blog post metadata validation failed"); 
+    }
+
+    return {
+        content,
+        metadata,
+    };
+});

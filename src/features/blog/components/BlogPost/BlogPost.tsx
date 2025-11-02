@@ -1,28 +1,19 @@
 import { MDXRemote } from 'next-mdx-remote-client/rsc';
-import matter from 'gray-matter';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 import { Link } from '@/components/Link';
-import { safeParse } from '@/utils/errors/safeParse';
 
-import { BlogPostSchema } from '$/blog/schemas/blog.schema';
+import { type BlogPostMetadata } from '$/blog/schemas/blog.schema';
 import { components } from '$/blog/components/mdx';
 
 import { ErrorComponent } from './ErrorComponent';
 
 interface BlogPostProps {
-    source: string;
+    content: string;
+    metadata: BlogPostMetadata
 }
 
-export async function BlogPost({ source }: BlogPostProps) {
-    const { data, content } = matter(source);
-
-    const { data: metadata } = await safeParse(BlogPostSchema, data);
-
-    if (!metadata) {
-        return <ErrorComponent message="Failed to load blog post metadata." />;
-    }
-
+export async function BlogPost({ content, metadata}: BlogPostProps) {
     console.log('BlogPost component for: ', metadata.title);
 
     return (
