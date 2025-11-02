@@ -210,4 +210,20 @@
     .bg-gradient {
         @apply bg-gradient-to-b from-[#ffffffff] via-[#ffffffc8] to-[#ffffff4b];
     }
+
+    .snippet-scrollbar::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .snippet-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .snippet-scrollbar::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-[#ffffff50];
+    }
+
+    .snippet-scrollbar::-webkit-scrollbar-thumb:hover {
+        @apply bg-[#ffffffc8];
+    }
 }

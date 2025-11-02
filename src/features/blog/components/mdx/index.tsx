@@ -110,7 +110,7 @@ export const components: MDXComponents = {
     /* Preformatted code blocks */
     pre: (props) => (
         <pre
-            className="border-site-border-2 my-4 overflow-x-auto rounded-lg border bg-black/90 p-4 text-sm text-white"
+            className="snippet-scrollbar border-site-border-2 my-4 overflow-x-auto rounded-lg border bg-black/90 p-4 text-sm text-white"
             {...props}
         />
     ),
