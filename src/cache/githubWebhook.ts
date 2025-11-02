@@ -70,6 +70,12 @@ export async function findTagsToRevalidate(
                 tagsToRevalidate.add(CACHE_TAGS.PROJECTS);
             } else if (file === 'blog/index.json') {
                 tagsToRevalidate.add(CACHE_TAGS.BLOG_LIST);
+            } else if (file.startsWith('blog/posts/')) {
+                const filename = file.split('/').pop();
+                if (filename && filename.endsWith('.mdx')) {
+                    const slug = filename.replace('.mdx', '');
+                    if (slug) tagsToRevalidate.add(CACHE_TAGS.BLOG_POST(slug));
+                }
             }
         }
     }

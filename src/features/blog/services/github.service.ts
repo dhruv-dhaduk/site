@@ -44,3 +44,28 @@ export async function fetchBlogsList(): Promise<Array<Blog>> {
 
     return blogsList.data;
 }
+
+/**
+ * Fetch a single blog post by its slug from the GitHub repository.
+ * This function is not cached. This is expected to be called at cached page.tsx
+ * @param slug The slug of the blog post.
+ * @returns The content of the blog post.
+ */
+export async function fetchBlogPost(slug: string): Promise<string> {
+    const BLOG_POST_URL = `${env.GITHUB_VAULT_URL}/contents/blog/posts/${slug}.mdx`;
+
+    const [response, fetch_error] = await tryCatch(
+        axios.get(BLOG_POST_URL, {
+            headers: {
+                Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+                Accept: 'application/vnd.github.v3.raw',
+            },
+        })
+    );
+
+    if (fetch_error) {
+        throw new Error(`HTTP error`);
+    }
+
+    return response.data;
+}

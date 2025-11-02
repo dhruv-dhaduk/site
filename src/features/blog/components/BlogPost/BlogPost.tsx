@@ -1,7 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote-client/rsc';
 import matter from 'gray-matter';
 import rehypePrettyCode from 'rehype-pretty-code';
-import { cacheLife } from 'next/cache';
 
 import { Link } from '@/components/Link';
 import { safeParse } from '@/utils/errors/safeParse';
@@ -16,9 +15,6 @@ interface BlogPostProps {
 }
 
 export async function BlogPost({ source }: BlogPostProps) {
-    'use cache';
-    cacheLife('max');
-
     const { data, content } = matter(source);
 
     const { data: metadata } = await safeParse(BlogPostSchema, data);
