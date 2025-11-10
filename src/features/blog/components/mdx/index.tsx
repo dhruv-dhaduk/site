@@ -37,13 +37,16 @@ export const components: MDXComponents = {
     a: ({ href, children, ...props }) => {
         const anchorProps =
             props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
+
+        const className = 'text-[#0088ff] underline-offset-4 hover:underline';
+
         if (typeof href === 'string' && href.startsWith('/')) {
             return (
                 <Link
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     href={href as any}
                     prefetch="auto"
-                    className="text-site-fg-1 hover:text-site-fg-0 italic underline underline-offset-4 hover:no-underline"
+                    className={className}
                     {...anchorProps}
                 >
                     {children}
@@ -53,7 +56,7 @@ export const components: MDXComponents = {
         return (
             <a
                 href={href}
-                className="text-site-fg-1 hover:text-site-fg-0 italic underline underline-offset-4 hover:no-underline"
+                className={className}
                 target="_blank"
                 rel="noopener noreferrer"
                 {...anchorProps}
