@@ -1,6 +1,11 @@
 import type { MDXComponents } from 'next-mdx-remote-client/rsc';
 
 export const intrinsicComponents: MDXComponents = {
+    // Wrapper ensures consistent fonts, max width and base text color
+    wrapper: ({ children }: { children: React.ReactNode }) => (
+        <div className="font-inter w-full antialiased">{children}</div>
+    ),
+
     /* Headings */
     h1: (props) => (
         <h1
