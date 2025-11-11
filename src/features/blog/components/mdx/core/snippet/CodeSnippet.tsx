@@ -1,7 +1,8 @@
 import { codeToHtml } from 'shiki';
 
 import { CopyButton } from './CopyButton';
-import { getLanguageLabel, parseLanguageFromClassName } from './utils';
+import { parseLanguageFromClassName } from './utils';
+import { LanguageLabel } from './LanguageLabel';
 
 export async function CodeSnippet(props: React.HTMLAttributes<HTMLElement>) {
     const { className, children } = props;
@@ -16,8 +17,6 @@ export async function CodeSnippet(props: React.HTMLAttributes<HTMLElement>) {
         return <code {...props} />;
     }
 
-    const languageLabel = getLanguageLabel(language);
-
     const highlightedCode = await codeToHtml(children, {
         lang: language,
         theme: 'github-dark',
@@ -27,7 +26,7 @@ export async function CodeSnippet(props: React.HTMLAttributes<HTMLElement>) {
     return (
         <div className="border-site-border-2 my-4 overflow-hidden rounded-lg border bg-black/90 text-white">
             <div className="border-site-border-2 flex items-center justify-between border-b p-4 py-2.5">
-                <p className="text-sm">{languageLabel}</p>
+                <LanguageLabel language={language} />
                 <CopyButton codeToCopy={children} />
             </div>
             <div className="snippet-scrollbar overflow-x-auto bg-[#060606] p-4 text-sm">

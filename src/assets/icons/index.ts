@@ -18,3 +18,7 @@ export * from './Telegram';
 export * from './Tick';
 export * from './Website';
 export * from './Wiki';
+
+// Programming Languages Icons
+export * from './JavaScript';
+export * from './TypeScript';
