@@ -1,5 +1,4 @@
 import { MDXRemote } from 'next-mdx-remote-client/rsc';
-import rehypePrettyCode from 'rehype-pretty-code';
 
 import { Link } from '@/components/Link';
 
@@ -10,10 +9,10 @@ import { ErrorComponent } from './ErrorComponent';
 
 interface BlogPostProps {
     content: string;
-    metadata: BlogPostMetadata
+    metadata: BlogPostMetadata;
 }
 
-export async function BlogPost({ content, metadata}: BlogPostProps) {
+export async function BlogPost({ content, metadata }: BlogPostProps) {
     console.log('BlogPost component for: ', metadata.title);
 
     return (
@@ -42,19 +41,6 @@ export async function BlogPost({ content, metadata}: BlogPostProps) {
                 onError={ErrorComponent}
                 source={content}
                 components={components}
-                options={{
-                    mdxOptions: {
-                        rehypePlugins: [
-                            [
-                                rehypePrettyCode,
-                                {
-                                    theme: 'github-dark',
-                                    keepBackground: false,
-                                },
-                            ],
-                        ],
-                    },
-                }}
             />
         </main>
     );
