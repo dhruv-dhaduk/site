@@ -16,7 +16,7 @@ export function CopyButton({ codeToCopy }: CopyButtonProps) {
         if (isCopied) return;
 
         try {
-            navigator.clipboard.writeText(codeToCopy);
+            navigator.clipboard.writeText(codeToCopy.trim());
         } catch (err: unknown) {
             console.error('Failed to copy code snippet:', err);
             return;
