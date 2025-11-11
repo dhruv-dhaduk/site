@@ -1,6 +1,7 @@
 export * from './Ban';
 export * from './Blog';
 export * from './Close';
+export * from './Copy';
 export * from './Discord';
 export * from './Download';
 export * from './Email';
@@ -14,5 +15,6 @@ export * from './Npm';
 export * from './Projects';
 export * from './Slack';
 export * from './Telegram';
+export * from './Tick';
 export * from './Website';
 export * from './Wiki';

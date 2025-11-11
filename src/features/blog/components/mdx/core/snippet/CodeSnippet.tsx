@@ -26,13 +26,13 @@ export async function CodeSnippet(props: React.HTMLAttributes<HTMLElement>) {
 
     return (
         <div className="border-site-border-2 my-4 overflow-hidden rounded-lg border bg-black/90 text-white">
-            <div className="border-site-border-2 flex items-center justify-between border-b p-4 py-2">
-                <p className="font-bold">{languageLabel}</p>
+            <div className="border-site-border-2 flex items-center justify-between border-b p-4 py-2.5">
+                <p className="text-sm">{languageLabel}</p>
                 <CopyButton codeToCopy={children} />
             </div>
             <div className="snippet-scrollbar overflow-x-auto bg-[#060606] p-4 text-sm">
                 <code
-                    className="text-site-fg-1 w-fit py-0.5 font-mono text-sm"
+                    className="text-site-fg-1 w-fit py-0.5 font-mono text-sm leading-[22px]"
                     dangerouslySetInnerHTML={{ __html: highlightedCode }}
                 ></code>
             </div>
