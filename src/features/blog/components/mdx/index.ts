@@ -4,11 +4,9 @@ import { intrinsicComponents } from './core/intrinsic';
 import { anchor } from './core/anchor';
 import { image } from './core/image';
 import { CodeSnippet } from './core/snippet';
-import { Btn } from './Btn';
 import { CodeSandboxLink } from './CodeSandboxLink';
 
 export const MDXProvidedComponents = {
-    Btn,
     CodeSandboxLink,
 } as const;
 
