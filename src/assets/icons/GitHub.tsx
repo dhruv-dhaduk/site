@@ -1,4 +1,6 @@
-export function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
+export function GitHubIcon(
+    props: React.SVGProps<SVGSVGElement> & { title?: string }
+) {
     return (
         <svg
             viewBox="0 0 20 20"
@@ -16,7 +18,7 @@ export function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
                 strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
-                <title>github [#fffffffffff]</title>
+                <title>{props.title ? props.title : 'GitHub'}</title>
                 <desc>Created with Sketch.</desc> <defs> </defs>
                 <g
                     id="Page-1"

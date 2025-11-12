@@ -1,6 +1,7 @@
 export * from './Ban';
 export * from './Blog';
 export * from './Close';
+export * from './Code';
 export * from './Copy';
 export * from './Discord';
 export * from './Download';

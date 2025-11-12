@@ -5,9 +5,11 @@ import { anchor } from './core/anchor';
 import { image } from './core/image';
 import { CodeSnippet } from './core/snippet';
 import { Btn } from './Btn';
+import { CodeSandboxLink } from './CodeSandboxLink';
 
 export const MDXProvidedComponents = {
-    MDX_Btn: Btn,
+    Btn,
+    CodeSandboxLink,
 } as const;
 
 export const components: MDXComponents = {
